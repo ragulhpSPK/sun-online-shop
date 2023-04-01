@@ -1,6 +1,5 @@
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
-
 import Image from "next/image";
 
 function Navbar() {
