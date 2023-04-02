@@ -2,25 +2,22 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
-import Image from "next/image";
-import styles from "../styles/navbar.module.css";
+import { Navigation,Autoplay } from "swiper";
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay'
 
-export default function Swipper() {
+
+
+
+
+export default function App() {
+
   return (
-    <>
-      <Swiper
-        cssMode={true}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className={styles.swiper}
-      >
-        <SwiperSlide className="flex">
-          <Image src="/assets/tv.png" width={800} height={900} />
+    <div className="bg-[red] ">
+      <Swiper navigation={true} modules={[Navigation,Autoplay]} classNam="myswiper" Autoplay={true}  pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }} autoplay={{delay:5000}}>
+        <SwiperSlide className="flex w-[100vw]"><img src="/assets/tv.png" style={{height:"300px",width:"400px"}}></img>
+        <h1 className="absolute top-20 left-[40vw]">Upto 60 % offer<br/>Dont Miss It</h1>
         </SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
@@ -31,6 +28,6 @@ export default function Swipper() {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 }
