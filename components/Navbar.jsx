@@ -1,5 +1,4 @@
 import React from "react";
-import { SearchOutlined } from "@ant-design/icons";
 import Image from "next/image";
 
 function Navbar() {
@@ -9,17 +8,28 @@ function Navbar() {
         <div>
           <Image src="/assets/sunn.png" width={80} height={80} alt="Logo" />
         </div>
-        <div className="w-[30vw] relative">
+        <div class="pt-2 relative w-[30vw] text-gray-600">
           <input
-            type="text"
-            placeholder="Search  Products"
-            className="input input-slate w-[30vw] h-[5vh] border-2 border-slate-200 text-xl -tracking-normal"
-          ></input>
-          <SearchOutlined className="absolute top-0  right-0 text-3xl backdrop-saturate-200 bg-[#000] opacity-75 h-[100%]  w-[53px] text-white rounded-md"></SearchOutlined>
+            class="border-2 border-gray-300 bg-white h-12 px-5 pr-16 w-[100%] rounded-lg text-sm focus:outline-none"
+            type="search"
+            name="search"
+            placeholder="Search"
+          />
+          <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </button>
         </div>
         <div className="w-[5vw]">
           <Image src="/assets/cart2.png" width={30} height={30} alt="Cart" />
-          <p className="absolute top-3 right-[28.7vw] bg-[#82237c] p-1 h-7  w-7 text-center text-white rounded-full">
+          <p className="absolute top-4 right-[28vw] bg-[#82237c]  h-5  w-5 text-center text-sm text-white rounded-full">
             2
           </p>
         </div>
