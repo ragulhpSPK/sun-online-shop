@@ -55,7 +55,7 @@ export const ProductsList = [
   },
   {
     id: 10,
-    image: "/assets/Aircooler.png",
+    image: "/assets/aircooler.png",
     category: "Air Coolers",
     price: "starts from 6000",
   },
