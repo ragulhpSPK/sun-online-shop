@@ -1,5 +1,4 @@
 import React from "react";
-import { AllProductList } from "@/helper/AllProducts";
 import { ProductsList } from "../helper/products";
 
 function AllProducts() {
