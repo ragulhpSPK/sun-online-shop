@@ -5,19 +5,19 @@ import styles from "../styles/Home.module.css";
 function Delivery() {
   return (
     <div
-      className="flex justify-evenly mt-14  h-[14vh] w-[90vw] m-auto  text-black"
+      className="flex justify-evenly mt-14  h-[14vh] w-[90vw] m-auto  text-black "
       id={styles.shadow}
     >
       <div className="flex items-center">
         <div>
-          <p className="text-xl h-[50px] " id={styles.hover}>
+          <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-12 h-12 text-[#82237c] hover:scale-110 duration-1000"
+              className="lg:w-10 lg:h-12 xsm:h-6 xsm:w-6 text-[#82237c] hover:scale-110 duration-1000"
             >
               <path
                 strokeLinecap="round"
@@ -27,21 +27,21 @@ function Delivery() {
             </svg>
           </p>
         </div>
-        <div className="pl-3 text-xl">
+        <div className="pl-3 lg:text-xl xsm:text-[8px]">
           <p>Free Delivery</p>
           <p>Order above 10000</p>
         </div>
       </div>
       <div className="flex items-center">
         <div>
-          <p className="text-xl">
+          <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-10 h-12 text-[#82237c] hover:scale-110 duration-1000"
+              className="lg:w-10 lg:h-12 xsm:h-6 xsm:w-6 text-[#82237c] hover:scale-110 duration-1000"
             >
               <path
                 strokeLinecap="round"
@@ -51,21 +51,21 @@ function Delivery() {
             </svg>
           </p>
         </div>
-        <div className="pl-3 text-xl">
+        <div className="pl-3 xsm:text-[8px] lg:text-xl">
           <p>Cash On Delivery</p>
           <p>from Zero</p>
         </div>
       </div>
       <div className="flex items-center">
         <div>
-          <p className="text-xl">
+          <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-10 h-12 text-[#82237c] hover:scale-110 duration-1000"
+              className="lg:w-10 lg:h-12 xsm:h-6 xsm:w-6 text-[#82237c] hover:scale-110 duration-1000"
             >
               <path
                 stroke-linecap="round"
@@ -75,21 +75,21 @@ function Delivery() {
             </svg>
           </p>
         </div>
-        <div className="pl-3 text-xl">
+        <div className="pl-3 lg:text-xl xsm:text-[8px]">
           <p>Free Gift Box</p>
           <p>On special Days</p>
         </div>
       </div>
       <div className="flex items-center">
         <div>
-          <p className="text-xl">
+          <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-10 h-12 text-[#82237c] hover:scale-110 duration-1000"
+              className="lg:w-10 lg:h-12 xsm:h-6 xsm:w-6 text-[#82237c] hover:scale-110 duration-1000"
             >
               <path
                 strokeLinecap="round"
@@ -99,7 +99,7 @@ function Delivery() {
             </svg>
           </p>
         </div>
-        <div className="pl-3 text-xl">
+        <div className="pl-3 lg:text-xl xsm:text-[8px]">
           <p>Best Services</p>
           <p>Some Free Services</p>
         </div>

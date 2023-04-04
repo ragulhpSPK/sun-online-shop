@@ -10,7 +10,7 @@ import styles from "../styles/navbar.module.css";
 
 export default function App() {
   return (
-    <div className="xsm:h-[300px] lg:h-[500px] xsm:w-screen">
+    <div className="xsm:h-[300px] lg:h-[500px] xsm:w-screen ">
       <Swiper
         navigation={true}
         modules={[Navigation, Autoplay]}

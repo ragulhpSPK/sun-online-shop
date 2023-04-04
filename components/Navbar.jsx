@@ -32,10 +32,10 @@ function Navbar() {
         <div className="xsm:min-w-[20px] lg:w-[5vw]">
           <img
             src="/assets/cart2.png"
-            className="lg:w-10 xsm:w-[30px]"
+            className="lg:w-7 xsm:w-[30px]"
             alt="Cart"
           />
-          <p className="absolute xsm:top-[2vh] xsm:float-right xsm:right-[2vw] md:right-[5vw]  lg:top-3 lg:right-[27.7vw] bg-[#82237c] xsm:h-[20px] xsm:w-[20px] xsm:text-[16px]  lg:h-6  lg:w-6 text-center lg:text-md text-white rounded-full">
+          <p className="absolute xsm:top-[2vh] xsm:float-right xsm:right-[2vw] md:right-[5vw]  lg:top-4 lg:right-[28vw] bg-[#82237c] xsm:h-[20px] xsm:w-[20px] xsm:text-[12 px]  lg:h-5  lg:w-5 text-center lg:text-md text-white rounded-full">
             2
           </p>
         </div>
