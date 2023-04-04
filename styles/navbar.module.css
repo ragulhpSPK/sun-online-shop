@@ -2,9 +2,7 @@
   position: relative;
   top: 50%;
   width: 24em;
-  margin: 0 auto;
   border-right: 3px solid rgba(255, 255, 255, 0.338);
-  font-size: 180%;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;

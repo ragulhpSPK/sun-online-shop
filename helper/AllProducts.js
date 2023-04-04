@@ -1,0 +1,42 @@
+export const AllProductList = [
+  {
+    id: 1,
+    name: "Redmi note 12 pro",
+    image: "/assets/redmi.webp",
+    price: "25999",
+    category: "Mobiles",
+    subcategory: "MI",
+  },
+  {
+    id: 2,
+    name: "Redmi note 12 pro",
+    image: "/assets/redmi.webp",
+    price: "25999",
+    category: "Mobiles",
+    subcategory: "MI",
+  },
+  {
+    id: 3,
+    name: "Redmi note 12 pro",
+    image: "/assets/redmi.webp",
+    price: "25999",
+    category: "Mobiles",
+    subcategory: "MI",
+  },
+  {
+    id: 4,
+    name: "Redmi note 12 pro",
+    image: "/assets/redmi.webp",
+    price: "25999",
+    category: "Mobiles",
+    subcategory: "MI",
+  },
+  {
+    id: 5,
+    name: "Redmi note 12 pro",
+    image: "/assets/redmi.webp",
+    price: "25999",
+    category: "Mobiles",
+    subcategory: "MI",
+  },
+];
