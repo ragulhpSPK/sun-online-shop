@@ -8,3 +8,7 @@
   font-family: sans-serif;
   user-select: none;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="xsm:h-[300px] lg:h-[500px] xsm:w-screen ">
       <Swiper
-        navigation={true}
+        navigation={false}
         modules={[Navigation, Autoplay]}
         className="myswiper h-[100%] xsm:w-screen"
         pagination={{ clickable: true }}
