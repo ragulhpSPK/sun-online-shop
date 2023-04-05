@@ -35,7 +35,7 @@ function Navbar() {
             className="lg:w-7 xsm:w-[30px]"
             alt="Cart"
           />
-          <p className="absolute xsm:top-[2vh] xsm:float-right xsm:right-[2vw] md:right-[5vw]  lg:top-4 lg:right-[28vw] bg-[#82237c] xsm:h-[20px] xsm:w-[20px] xsm:text-[12 px]  lg:h-5  lg:w-5 text-center lg:text-md text-white rounded-full">
+          <p className="absolute xsm:top-[2vh] xsm:float-right xsm:right-[2vw] md:right-[5vw]  lg:top-4 lg:right-[29vw] bg-[#82237c] xsm:h-[20px] xsm:w-[20px] xsm:text-[12 px]  lg:h-5  lg:w-5 text-center lg:text-md text-white rounded-full">
             2
           </p>
         </div>
