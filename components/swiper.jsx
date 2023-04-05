@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import styles from "../styles/navbar.module.css";
@@ -13,7 +13,7 @@ export default function App() {
     <div className="xsm:h-[300px] lg:h-[500px] xsm:w-screen ">
       <Swiper
         navigation={false}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, Pagination]}
         className="myswiper h-[100%] xsm:w-screen"
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}

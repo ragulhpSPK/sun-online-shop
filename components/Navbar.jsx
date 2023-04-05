@@ -43,7 +43,7 @@ function Navbar() {
           <p className="lg:text-md text-[#82237c] lg:font-medium ">
             For Contact:
           </p>
-          <p className="text-black font-semi-bold  ">123-534-8364</p>
+          <p className="text-black font-semi-bold">123-534-8364</p>
           <p></p>
         </div>
       </div>
