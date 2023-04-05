@@ -61,9 +61,9 @@ export default function App() {
         </SwiperSlide>
         <SwiperSlide id={styles.wrapper_1} className="xsm:pt-20 md:pt-0">
           <img
-            src="/assets/tv-2 (1).png"
+            src="/assets/tv4.png"
             alt="Image"
-            className="float-left xsm:h-[150px] xsm:w-[150px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[500px] xxl:pl-32 xxl:h-[500px] xxl:w-[800px] "
+            className="float-left xsm:h-[150px] xsm:w-[150px] md:h-[300px] md:w-[300px] lg:h-[350px] lg:w-[550px] lg:mt-14 xxl:pl-32 xxl:h-[500px] xxl:w-[800px] "
           />
           <div className="lg:w-[50vw] xsm:w-[50vw]  xxl:pl-0 float-right xxl:pt-10 md:pt-20 lg:pt-32 ">
             <p className="lg:text-8xl  font-light">

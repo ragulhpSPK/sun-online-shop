@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 function Categories() {
   return (
-    <div className="w-screen pt-20">
+    <div className="w-screen pt-10">
       <div className="w-screen flex justify-center">
         <div className="flex h-[7vh] text-[#82237c] justify-between items-center  w-[90vw]  rounded-sm">
           <h1 className=" text-2xl text-center pt-3 font-semibold">
@@ -25,7 +25,7 @@ function Categories() {
         </div>
       </div>
 
-      <div className="flex h-[300px] justify-center items-center">
+      <div className="flex h-[220px] justify-center  items-center">
         <div className=" w-[90vw] h-[20vh]">
           <div>
             <Swiper
