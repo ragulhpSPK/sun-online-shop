@@ -44,7 +44,7 @@ function Categories() {
                     <div>
                       <img
                         src={data.image}
-                        className="h-[100px] float-left hover:scale-110 duration-1000"
+                        className=" h-[80px] mt-5 float-left hover:scale-110 duration-1000"
                       />
                     </div>
 

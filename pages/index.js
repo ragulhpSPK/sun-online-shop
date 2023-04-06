@@ -2,6 +2,7 @@ import Head from "next/head";
 import Swiper from "../components/swiper";
 import Delivery from "@/components/delivery";
 import Categories from "@/components/categories";
+import Bestdeals from "@/components/bestdeals";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Swiper />
         <Delivery />
         <Categories />
+        <Bestdeals/>
       </main>
     </>
   );
