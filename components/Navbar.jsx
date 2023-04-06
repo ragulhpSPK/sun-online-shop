@@ -7,16 +7,16 @@ function Navbar() {
         <div>
           <img src="/assets/sunn.png" className="xl:w-20 xsm:w-14" alt="Logo" />
         </div>
-        <div class="pt-2 relative lg:w-[30vw] xsm:w-[50vw] text-gray-600">
+        <div className="pt-2 relative lg:w-[30vw] xsm:w-[50vw] text-gray-600">
           <input
-            class="border-2 border-gray-300 bg-white xsm:h-8 xsm:w-[100%] lg:h-12 px-5 pr-16 lg:w-[100%] rounded-lg text-sm focus:outline-none"
+            className="border-2 border-gray-300 bg-white xsm:h-8 xsm:w-[100%] lg:h-12 px-5 pr-16 lg:w-[100%] rounded-lg text-sm focus:outline-none"
             type="search"
             name="search"
             placeholder="Search"
           />
           <button
             type="submit"
-            class="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-0 lg:mt-5 lg:mr-4"
+            className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-0 lg:mt-5 lg:mr-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -13,7 +13,7 @@ function Categories() {
   return (
     <div className="w-screen pt-10">
       <div className="w-screen flex justify-center">
-        <div className="flex h-[7vh] text-[#82237c] justify-between items-center  w-[90vw]  rounded-sm">
+        <div className="flex h-[7vh] text-[blue] justify-between items-center  w-[90vw]  rounded-sm">
           <h1 className=" text-2xl text-center pt-3 font-semibold">
             Shop By Category
           </h1>
@@ -40,7 +40,7 @@ function Categories() {
             >
               {ProductsList.map((data) => {
                 return (
-                  <SwiperSlide className="p-5  border  shadow-xl flex justify-between hover:shadow-gray-500">
+                  <SwiperSlide className="p-5  border  shadow-xl flex justify-between hover:shadow-gray-500" key={data.id}>
                     <div>
                       <img
                         src={data.image}
