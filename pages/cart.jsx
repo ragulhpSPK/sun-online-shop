@@ -15,8 +15,7 @@ function Cart()
 			<div className='pt-10'>
 				<div className="overflow-x-auto w-[70vw]">
 					<table className={
-						`table w-[60vw] border m-auto  ${
-							check ? 'hidden' : 'block'
+						`table w-[60vw] border m-auto  
 						}`
 					}>
 						{/* head */}
@@ -75,7 +74,7 @@ function Cart()
 			</div>
 
 			<div className={
-				`min-h-[50vh] w-[30vw] absolute left-[30vw] top-20 shadow-2xl pl-10 ${
+				`min-h-[50vh] w-[30vw] absolute right-10 top-10 shadow-2xl pl-10 ${
 					check ? 'block' : 'hidden'
 				}`
 			}>
