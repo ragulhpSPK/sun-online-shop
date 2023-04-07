@@ -47,6 +47,21 @@ export default function App() {
         </li>
         <li className="text-2xl pt-1">5000 mAh Lithium Polymer Battery</li>
         <li className="text-2xl pt-1">Mediatek Dimensity 1080 Processor</li>
+        <div className="w-[100%] pt-5">
+          <label for="quantity" className="p-5 font-light text-xl">
+            Qty
+          </label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            defaultValue={1}
+            defaultChecked
+            id="quantity"
+            name="quantity"
+            className="w-12  border-2 border-black "
+          />
+        </div>
         <div className="pt-10 flex justify-between w-[15vw]">
           <button className="bg-[#82237c] text-[#fff] text-2xl rounded-md px-3 py-2">
             Add to Cart
