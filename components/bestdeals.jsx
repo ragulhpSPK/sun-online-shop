@@ -12,8 +12,8 @@ function Bestdeals() {
   return (
     <div>
       <div className=" bg-[red] h-[50vh] w-[90vw] m-auto flex">
-        <div className="flex flex-col border-8 border-[blue] h-[49vh] w-[89.5vw] m-auto rounded-md">
-          <div className="flex justify-between px-1 bg-[blue]  h-[20vh]">
+        <div className="flex flex-col border-8 border-[rgb(0,0,128)] h-[49vh] w-[89.5vw] m-auto rounded-md">
+          <div className="flex justify-between px-1 bg-[rgb(0,0,128)]  h-[20vh]">
             <div className="flex flex-col justify-around">
               <img src="/assets/deals.png" className="w-28 h-14" />
               <p className="text-white text-2xl">Best Deals today</p>
@@ -54,9 +54,13 @@ function Bestdeals() {
       <div className="h-[40vh]  mt-14 w-[90vw] m-auto " id={styles.shadow2}>
         <div className="pt-5 ">
           <div className="flex w-[90vw] justify-between m-auto px-5">
-            <p className="text-[blue] text-3xl">Flash Deals</p>
+            <p className="text-[rgb(0,0,128)] font-bold text-3xl">
+              Flash Deals
+            </p>
             <Link href="flashDeals">
-              <p className="text-[blue]">See All &#8594;</p>
+              <p className="text-[rgb(0,0,128)] font-bold text-xl">
+                See All &#8594;
+              </p>
             </Link>
           </div>
         </div>

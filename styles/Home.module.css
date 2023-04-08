@@ -29,7 +29,7 @@
 }
 
 .spinner::before {
-  border-color: rgb(168, 16, 168) #0000;
+  border-color: rgb(0,0,128) #0000;
   animation: inherit;
   animation-duration: 0.5s;
   animation-direction: reverse;
@@ -63,7 +63,7 @@
 #form input, #input {
   height: 35px;
   outline: none;
-  border: 2px solid #82237c;
+  border: 2px solid rgb(0,0,128);
   background: transparent;
   padding: 20px 10px;
   border-radius: 5px;
@@ -73,7 +73,7 @@
 }
 
 #form input:focus, #input:focus {
-  background: #82237c;
+  background: rgb(0,0,128);
 }
 
 #form button {
@@ -85,7 +85,7 @@
   border: none;
   height: 45px;
   border-radius: 5px;
-  background: #82237c;
+  background: rgb(0,0,128);
   align-self: flex-end;
 }
   

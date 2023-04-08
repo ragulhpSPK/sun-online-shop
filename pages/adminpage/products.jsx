@@ -64,7 +64,7 @@ function Products() {
                 <td className="flex justify-between items-center  h-32">
                   <label
                     htmlFor="my-modal-3"
-                    className="rounded-md h-10 w-10 bg-[#82237c] border-none text-center pt-1"
+                    className="rounded-md h-10 w-10 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
                   >
                     <EditIcon
                       onClick={() => {
@@ -74,7 +74,7 @@ function Products() {
                   </label>
                   <a
                     href="#my-modal-2"
-                    className="rounded-md h-10 w-10 bg-[#82237c] border-none text-center pt-1"
+                    className="rounded-md h-10 w-10 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
                     onClick={() => {
                       setDlt(true);
                     }}
@@ -150,18 +150,21 @@ function Products() {
       )}
 
       <div>
-        {" "}
         {dlt ? (
           <div className="modal" id="my-modal-2">
             <div className="modal-box">
               <h3 className="text-2xl">
-                Are you sure want to delete this Category
+                Are you sure want to delete this product
               </h3>
               <div className="modal-action">
-                <a href="#" className="btn">
+                <a href="#" className="btn bg-[rgb(0,0,128)]">
                   Yay!
                 </a>
-                <a href="#" className="btn" onClick={() => setDlt(false)}>
+                <a
+                  href="#"
+                  className="btn bg-[rgb(0,0,128)]"
+                  onClick={() => setDlt(false)}
+                >
                   no
                 </a>
               </div>

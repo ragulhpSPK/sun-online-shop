@@ -3,7 +3,7 @@ import React from "react";
 function FlashDeals() {
   return (
     <div>
-      <div className="bg-[blue] w-[90vw] m-auto h-[35vh]">
+      <div className="bg-[rgb(0,0,128)] w-[90vw] m-auto h-[35vh]">
         <div className="text-[8vw] text-white text-center pt-10">
           Flash Deals
         </div>
@@ -16,7 +16,7 @@ function FlashDeals() {
             <div className="flex justify-between w-[100%]">
               <p className="text-center pl-5 pt-3 text-xl">Rs:3000</p>
               <div className="pt-3">
-                <button className="w-20 bg-[blue] h-8 text-white">
+                <button className="w-20 bg-[rgb(0,0,128)] h-8 text-white">
                   Buy now
                 </button>
               </div>
@@ -33,7 +33,7 @@ function FlashDeals() {
             <div className="flex justify-between w-[100%]">
               <p className="text-center pl-5 pt-3 text-xl">Rs:3000</p>
               <div className="pt-3">
-                <button className="w-20 bg-[blue] h-8 text-white">
+                <button className="w-20 bg-[rgb(0,0,128)] h-8 text-white">
                   Buy now
                 </button>
               </div>
@@ -50,7 +50,7 @@ function FlashDeals() {
             <div className="flex justify-between w-[100%]">
               <p className="text-center pl-5 pt-3 text-xl">Rs:3000</p>
               <div className="pt-3">
-                <button className="w-20 bg-[blue] h-8 text-white">
+                <button className="w-20 bg-[rgb(0,0,128)] h-8 text-white">
                   Buy now
                 </button>
               </div>
@@ -67,7 +67,7 @@ function FlashDeals() {
             <div className="flex justify-between w-[100%]">
               <p className="text-center pl-5 pt-3 text-xl">Rs:3000</p>
               <div className="pt-3">
-                <button className="w-20 bg-[blue] h-8 text-white">
+                <button className="w-20 bg-[rgb(0,0,128)] h-8 text-white">
                   Buy now
                 </button>
               </div>
@@ -84,7 +84,7 @@ function FlashDeals() {
             <div className="flex justify-between w-[100%]">
               <p className="text-center pl-5 pt-3 text-xl">Rs:3000</p>
               <div className="pt-3">
-                <button className="w-20 bg-[blue] h-8 text-white">
+                <button className="w-20 bg-[rgb(0,0,128)] h-8 text-white">
                   Buy now
                 </button>
               </div>
