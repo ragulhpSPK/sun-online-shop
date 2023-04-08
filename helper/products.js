@@ -52,7 +52,7 @@ export const ProductsList = [
   {
     id: 9,
     image: "/assets/makeup.png",
-    category: "Makeup fragents",
+    category: "Makeup & fragnents",
     items: "2 items",
   },
 ];

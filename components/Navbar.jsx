@@ -31,7 +31,7 @@ function Navbar()
 						</svg>
 					</button>
 				</div>
-				<div className="xsm:min-w-[20px] lg:w-[3vw] relative">
+				<div className="xsm:min-w-[20px] lg:w-[37px] relative">
 					<img src="/assets/cart2.png" className="lg:w-7 xsm:w-[30px]" alt="Cart"/>
 					<p className="absolute  xsm:float-right   bg-[#82237c] top-[-5px] right-0 xsm:h-[20px] xsm:w-[20px] xsm:text-[12px]  lg:h-5  lg:w-5 text-center lg:text-sm text-white rounded-full">
 						2

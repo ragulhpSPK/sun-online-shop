@@ -10,7 +10,7 @@ export const BestDeals=[
     id:2,
     image:'/assets/powder.png',
     offer:['22%','OFF'],
-     name:'ponds powder',
+    name:'ponds powder',
     price:'90'
 },
     {

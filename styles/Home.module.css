@@ -44,3 +44,49 @@
     transform: rotate(1turn);
   }
 }
+
+
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 100px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+#form input, #input {
+  height: 35px;
+  outline: none;
+  border: 2px solid #82237c;
+  background: transparent;
+  padding: 20px 10px;
+  border-radius: 5px;
+  transition: .5s;
+  color: white;
+  font-size: 20px;
+}
+
+#form input:focus, #input:focus {
+  background: #82237c;
+}
+
+#form button {
+  width: 100%;
+  color: white;
+  transition: .5s;
+  font-size: 22px;
+  outline: none;
+  border: none;
+  height: 45px;
+  border-radius: 5px;
+  background: #82237c;
+  align-self: flex-end;
+}
+  
+

@@ -18,8 +18,8 @@ export default function Home() {
         <Swiper />
         <Delivery />
         <Categories />
-        <Bestdeals/>
-        <Topproducts/>
+        <Bestdeals />
+        <Topproducts />
       </main>
     </>
   );
