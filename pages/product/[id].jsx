@@ -3,7 +3,7 @@ import {
 	useRef
 } from 'react'
 import React from 'react';
-import ReactImageMagnify from 'react-image-magnify'
+
 import styles from '../../styles/zoom.module.css'
 
 
@@ -48,7 +48,7 @@ export default function App() {
             <div className={
 						styles.left_2
 					}>
-						<ReactImageMagnify {...{
+						{/* <ReactImageMagnify {...{
 								    smallImage:{
 								        alt:'not',
 								        isFluidWidth:true,
@@ -63,7 +63,8 @@ export default function App() {
 								}}
 							className={
 								styles.img
-							}/>
+							}/> */}
+							<img src={img} alt="product"/>
 					</div>
 						<div className={
 							styles.left_1

@@ -29,7 +29,7 @@ function Bestdeals() {
             </div>
           </div>
           <div className="flex">
-            {BestDeals.slice(0, 5).map((data) => {
+            {BestDeals.slice(0, 6).map((data) => {
               return (
                 <div
                   className="relative   w-[18vw] h-[30vh] border-r-2 bg-[#fff] border-gray-400"

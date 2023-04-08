@@ -63,7 +63,7 @@ export default function App() {
           <img
             src="/assets/tv4.png"
             alt="Image"
-            className="float-left xsm:h-[150px] xsm:w-[150px] md:h-[300px] md:w-[300px] lg:h-[350px] lg:w-[550px] lg:mt-14 xxl:pl-32 xxl:h-[500px] xxl:w-[800px] "
+            className="float-left xsm:h-[150px] xsm:w-[150px] md:h-[300px] md:w-[300px] lg:h-[350px] lg:w-[550px] lg:mt-14 xxl:pl-32 xxl:h-[400px] xxl:w-[700px] "
           />
           <div className="lg:w-[50vw] xsm:w-[50vw]  xxl:pl-0 float-right xxl:pt-10 md:pt-20 lg:pt-32 ">
             <p className="lg:text-8xl  font-light">
