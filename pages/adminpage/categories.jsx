@@ -21,7 +21,7 @@ function Categories() {
           </thead>
           <tbody className="text-xl">
             <tr>
-              <td>2439874297394</td>
+              <td>24398....</td>
               <td>mobile</td>
               <td>Mi</td>
               <td className="flex justify-between items-center gap-5 h-32 w-32">

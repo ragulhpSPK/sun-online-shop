@@ -5,8 +5,6 @@ import styles from "../../styles/Home.module.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Divider, Input, Select, Space } from "antd";
-// import { useEditor, EditorContent } from "@tiptap/react";
-// import StarterKit from "@tiptap/starter-kit";
 
 let index = 0;
 
@@ -16,11 +14,6 @@ function Products() {
   const [items, setItems] = useState([]);
   const [name, setName] = useState();
   const inputRef = useRef(null);
-
-  // const editor = useEditor({
-  //   extensions: [StarterKit],
-  //   content: "<p>Hello World! 🌎️</p>",
-  // });
 
   const onNameChange = (e) => {
     setName(e.target.value);
@@ -39,7 +32,6 @@ function Products() {
       <div className="p-10">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-[80vw] border">
-            {/* head */}
             <thead>
               <tr>
                 <th className="text-xl font-medium">Image</th>
@@ -56,7 +48,7 @@ function Products() {
                 <td>
                   <img src="/assets/blutooth_speaker.png" className="w-20" />
                 </td>
-                <td>7949827332798</td>
+                <td>79498....</td>
                 <td>Boat Speaker 982</td>
                 <td>Rs:300</td>
                 <td>Most Quality Products and the sounds so good to hear...</td>
@@ -105,7 +97,6 @@ function Products() {
                 mode="multiple"
                 dropdownRender={(menu) => (
                   <>
-                    {" "}
                     {menu}
                     <Divider
                       style={{
@@ -172,9 +163,8 @@ function Products() {
           </div>
         ) : (
           ""
-        )}{" "}
+        )}
       </div>
-      {/* <EditorContent editor={editor} /> */}
     </div>
   );
 }
