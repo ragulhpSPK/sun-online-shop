@@ -51,13 +51,6 @@ function Subcat() {
       getItem("Option 11", "11"),
       getItem("Option 12", "12"),
     ]),
-    getItem(
-      "Group",
-      "grp",
-      null,
-      [getItem("Option 13", "13"), getItem("Option 14", "14")],
-      "group"
-    ),
   ];
 
   const onClick = (e) => {
@@ -99,8 +92,8 @@ function Subcat() {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-10">
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -110,8 +103,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -121,8 +114,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -132,8 +125,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -143,8 +136,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -154,8 +147,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -165,8 +158,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
@@ -176,8 +169,8 @@ function Subcat() {
           </p>
         </div>
 
-        <div className="h-[40vh] w-[15vw] shadow-lg mt-20 ml-5 border-2 relative">
-          <div className="h-[30vh] pt-10">
+        <div className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative">
+          <div className="h-[25vh] pt-10">
             <img src="/assets/joystick.png" className="w-auto p-5" />
           </div>
           <p className="text-center">PlayStation Joystick EC234</p>
