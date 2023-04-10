@@ -17,14 +17,10 @@ input[type="number"]::-webkit-inner-spin-button {
   opacity: 1;
 }
 
-
-
-
 button.ant-btn.css-dev-only-do-not-override-1e3x2xa.ant-btn-primary{
   color: black;
   background-color: none;
 }
-
 
 button,
 [type='button'],
@@ -33,3 +29,32 @@ button,
   color: red;
 }
 
+
+.swiper-wrapper{
+  flex-direction: row !important;
+}
+
+
+.swiper-button-prev
+{
+  display: none !important;
+}
+
+.swiper-button-next::clicked .swiper-button-prev{
+display: block !important;
+}
+
+.swiper-button-next{
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 30px;
+  z-index: 999;
+  box-shadow: rgba(0, 0, 0, 0.34) 10px 12px 20px;
+  color: black !important;
+  font-size: small;
+}
+
+.swiper-button-next:hover{
+  transform: scale(0.8) !important;
+  transition: 0.5s;
+}

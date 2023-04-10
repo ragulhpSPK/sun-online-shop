@@ -1,5 +1,6 @@
 import React from "react";
 import { ProductsList } from "../helper/products";
+import styles from "../styles/Home.module.css";
 
 function AllProducts() {
   return (
@@ -8,11 +9,12 @@ function AllProducts() {
         {ProductsList.map((data) => {
           return (
             <div
-              className="card w-[250px] h-[300px] bg-base-100 shadow-lg p-5 mt-12"
+              className="card w-[250px] h-[280px]  p-5 mt-12 bg-[#fff]"
               key={data.id}
+              id={styles.shadow3}
             >
               <figure>
-                <img src={data.image} alt="Shoes" className="h-[150px]" />
+                <img src={data.image} alt="products" className="h-[120px]" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{data.category}</h2>

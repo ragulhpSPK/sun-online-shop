@@ -1,13 +1,11 @@
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
 import { ProductsList } from "../helper/products";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
 import "swiper/css";
+import "swiper/css/grid";
 import "swiper/css/pagination";
+import { Grid, Pagination, Navigation, Autoplay } from "swiper";
 
 function Categories() {
   return (
@@ -25,10 +23,8 @@ function Categories() {
         </div>
       </div>
 
-      <div className="flex h-[220px] justify-center  items-center">
-        <div className=" w-[90vw] h-[20vh]">
-          <div>
-            <Swiper
+      <div className="h-[40vh] w-[90vw] m-auto shadow-xl">
+        {/* <Swiper
               slidesPerView={"4"}
               spaceBetween={30}
               pagination={{
@@ -58,9 +54,33 @@ function Categories() {
                   </SwiperSlide>
                 );
               })}
-            </Swiper>
-          </div>
-        </div>
+            </Swiper> */}
+        <Swiper
+          slidesPerView={7}
+          grid={{
+            rows: 2,
+          }}
+          modules={[Grid, Pagination, Navigation, Autoplay]}
+          navigation={{
+            clickable: true,
+          }}
+          autoplay={{ delay: 2000 }}
+          className={`mySwiper flex w-[90vw]`}
+        >
+          {ProductsList.map((data) => {
+            return (
+              <SwiperSlide className=" w-[80px]  border py-5">
+                <div className="flex justify-center">
+                  <img src={data.image} className="w-20 h-20" />
+                </div>
+                <div className="flex flex-col   items-center">
+                  <h1 className="text-justify text-lg">{data.category}</h1>
+                  <p className="text-justify text-md">{data.items}</p>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
       </div>
     </div>
   );

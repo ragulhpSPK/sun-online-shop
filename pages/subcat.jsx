@@ -18,7 +18,7 @@ function Subcat() {
   };
 
   const items = [
-    getItem("Games", "sub1", <MailOutlined />, [
+    getItem("Games", "sub1", "", [
       getItem(
         "Item 1",
         "g1",

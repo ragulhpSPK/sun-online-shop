@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 
 function Bestdeals() {
   return (
-    <div>
+    <div className="pt-5">
       <div className=" bg-[red] h-[50vh] w-[90vw] m-auto flex">
         <div className="flex flex-col border-8 border-[rgb(0,0,128)] h-[49vh] w-[89.5vw] m-auto rounded-md">
           <div className="flex justify-between px-1 bg-[rgb(0,0,128)]  h-[20vh]">
@@ -19,7 +19,7 @@ function Bestdeals() {
               <p className="text-white text-2xl">Best Deals today</p>
             </div>
             <div>
-              <h1 className="text-5xl text-white pt-2">Limited Time Sales</h1>
+              <h1 className="text-5xl text-white pt-10">Limited Time Sales</h1>
             </div>
             <div className="flex flex-col justify-around">
               <img src="/assets/deals2.png" className="w-16 h-14" />
@@ -51,7 +51,7 @@ function Bestdeals() {
 
       {/* Flash Deals */}
 
-      <div className="h-[40vh]  mt-14 w-[90vw] m-auto " id={styles.shadow2}>
+      <div className="h-[35vh]  mt-14 w-[90vw] m-auto " id={styles.shadow2}>
         <div className="pt-5 ">
           <div className="flex w-[90vw] justify-between m-auto px-5">
             <p className="text-[rgb(0,0,128)] font-bold text-3xl">
@@ -78,7 +78,7 @@ function Bestdeals() {
             {flashdeals.map((data) => {
               return (
                 <SwiperSlide className="relative w-[10vw] border-2 ">
-                  <img src={data.image} className="w-48" />
+                  <img src={data.image} className="w-32" />
                   <p className="flex flex-col bg-[gold] w-14 text-center absolute top-0 right-0">
                     <span>{data.offer}</span>
                     OFF
