@@ -78,7 +78,7 @@ function Products() {
     <div>
       <div className="w-[80vw] pt-10">
         <AddCardIcon
-          className="float-right"
+          className="float-right text-3xl"
           onClick={() => {
             setAdd(true);
           }}
