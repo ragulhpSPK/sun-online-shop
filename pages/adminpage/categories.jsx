@@ -55,10 +55,10 @@ function Categories() {
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal ">
               <form id={styles.form} className="h-[350px] w-[20vw] relative">
-                Sign Up
+                Update Categories
                 <input type="text" class="input" placeholder="Category" />
                 <input type="text" class="input" placeholder="Sub Category" />
-                <button>Update</button>
+                <button className="text-black">Update</button>
                 <CloseIcon
                   className="text-black  absolute top-0 right-0 m-2 w-10"
                   onClick={() => setCategory(false)}

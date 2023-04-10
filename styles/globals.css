@@ -30,3 +30,22 @@ input[type="number"]::-webkit-inner-spin-button {
   transition: .5s !important;
   font-size: 20px !important;
 } */
+
+
+button.ant-btn.css-dev-only-do-not-override-1e3x2xa.ant-btn-primary{
+  color: black;
+  background-color: none;
+}
+
+/* button.ant-btn.css-dev-only-do-not-override-1e3x2xa.ant-btn-primary:hover{
+  background-color: transparent;
+  border:2px solid rgb(135, 178, 235);
+} */
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit']{
+  color: red;
+}
+
