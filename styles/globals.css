@@ -58,3 +58,9 @@ display: block !important;
   transform: scale(0.8) !important;
   transition: 0.5s;
 }
+
+
+.rc-menu-submenu-selected{
+  background-color: transparent !important;
+}
+

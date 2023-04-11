@@ -77,7 +77,10 @@ function Bestdeals() {
           >
             {flashdeals.map((data) => {
               return (
-                <SwiperSlide className="relative w-[10vw] border-2 ">
+                <SwiperSlide
+                  className="relative w-[10vw] border-2 "
+                  key={data.id}
+                >
                   <img src={data.image} className="w-32" />
                   <p className="flex flex-col bg-[gold] w-14 text-center absolute top-0 right-0">
                     <span>{data.offer}</span>

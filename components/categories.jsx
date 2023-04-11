@@ -1,4 +1,3 @@
-import { ProductsList } from "../helper/products";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,8 +5,11 @@ import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
 import { Grid, Pagination, Navigation, Autoplay } from "swiper";
+import { Category } from "@/helper/categories";
+import { useRouter } from "next/router";
 
 function Categories() {
+  const router = useRouter();
   return (
     <div className="w-screen pt-10">
       <div className="w-screen flex justify-center">
@@ -22,7 +24,6 @@ function Categories() {
           </Link>
         </div>
       </div>
-
       <div className="h-[40vh] w-[90vw] m-auto shadow-xl">
         {/* <Swiper
               slidesPerView={"4"}
@@ -67,9 +68,15 @@ function Categories() {
           autoplay={{ delay: 2000 }}
           className={`mySwiper flex w-[90vw]`}
         >
-          {ProductsList.map((data) => {
+          {Category.map((data) => {
             return (
-              <SwiperSlide className=" w-[80px]  border py-5">
+              <SwiperSlide
+                className=" w-[80px]  border py-5 cursor-pointer"
+                key={data.id}
+                onClick={() => {
+                  router.push({ pathname: "/subcat", query: data });
+                }}
+              >
                 <div className="flex justify-center">
                   <img src={data.image} className="w-20 h-20" />
                 </div>
