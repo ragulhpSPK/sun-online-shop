@@ -8,7 +8,7 @@ import {
   notification,
 } from "antd";
 import React, { useEffect } from "react";
-import Sidenavbar from "./Sidenavbar";
+import Sidenavbar from "../Sidenavbar";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -17,12 +17,12 @@ import {
   getAllCatagory,
   updateCatagory,
   deleteCatagory,
-} from "../../helper/utilities/apiHelper";
+} from "../../../helper/utilities/apiHelper";
 import { get } from "lodash";
 
 const { Panel } = Collapse;
 
-const categories = () => {
+const Categories = () => {
   const [form] = Form.useForm();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
@@ -122,11 +122,8 @@ const categories = () => {
     },
   ];
   return (
-    <div className="flex">
-      <div>
-        <Sidenavbar />
-      </div>
-      <div className="flex flex-col ">
+    <>
+      <div className="flex flex-col">
         <div className="flex flex-col gap-y-10 h-[80vh]">
           <div
             className="p-2 !bg-white !shadow-inner cursor-pointer self-end pt-[2vh]"
@@ -167,8 +164,8 @@ const categories = () => {
           </div>
         </Form>
       </Modal>
-    </div>
+    </>
   );
 };
 
-export default categories;
+export default Categories;
