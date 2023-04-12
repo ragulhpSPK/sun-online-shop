@@ -43,7 +43,7 @@ const Subcategories = () => {
 
   return (
     <div className="flex flex-col w-[80vw]">
-      <div className="flex flex-col gap-y-5 pl-10">
+      <div className="flex flex-col gap-y-5 pl-0">
         <div
           className="p-2 !bg-white !shadow-inner cursor-pointer self-end  pt-[2vh]"
           onClick={() => {
@@ -68,8 +68,12 @@ const Subcategories = () => {
                   message: "please Enter SubCategory",
                 },
               ]}
+              className="flex flex-col gap-y-5"
             >
+              <Input size="large" placeholder="Enter Product Name" />
               <Input size="large" placeholder="Enter SubCategory" />
+              <Input size="large" placeholder="Enter Category" />
+              <Input size="large" placeholder="Enter price" />
             </Form.Item>
             <div className="flex gap-5 justify-end ">
               <Button
@@ -81,7 +85,7 @@ const Subcategories = () => {
               </Button>
               <Button
                 type="Primary"
-                className="bg-white shadow-xl"
+                className="bg-white shadow-xl hover:bg-blue-500 !text-black"
                 htmlType="submit"
               >
                 Save
