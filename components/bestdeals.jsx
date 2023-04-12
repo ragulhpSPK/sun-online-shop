@@ -11,9 +11,9 @@ import styles from "../styles/Home.module.css";
 function Bestdeals() {
   return (
     <div className="pt-5">
-      <div className=" bg-[red] h-[50vh] w-[90vw] m-auto flex">
-        <div className="flex flex-col border-8 border-[rgb(0,0,128)] h-[49vh] w-[89.5vw] m-auto rounded-md">
-          <div className="flex justify-between px-1 bg-[rgb(0,0,128)]  h-[20vh]">
+      <div className=" bg-[var(--fifth-color)] h-[50vh] w-[90vw] m-auto flex">
+        <div className="flex flex-col border-2 border-[var(--fifth-color)] h-[49vh] w-[89.5vw] m-auto rounded-md">
+          <div className="flex justify-between px-1 bg-[var(--second-color)]  h-[20vh]">
             <div className="flex flex-col justify-around">
               <img src="/assets/deals.png" className="w-28 h-14" />
               <p className="text-white text-2xl">Best Deals today</p>
@@ -36,7 +36,7 @@ function Bestdeals() {
                   key={data.id}
                 >
                   <img src={data.image} className="h-[220px] pt-10 pl-10" />
-                  <p className="bg-[gold] w-14 h-10 absolute top-0 right-0 skew-[20px] flex flex-col text-sm text-center">
+                  <p className="bg-[var(--fifth-color)] w-14 h-10 absolute top-0 right-0 skew-[20px] flex flex-col text-sm text-center">
                     <span>{data.offer[0]}</span>
                     {data.offer[1]}
                   </p>
@@ -54,11 +54,11 @@ function Bestdeals() {
       <div className="h-[35vh]  mt-14 w-[90vw] m-auto " id={styles.shadow2}>
         <div className="pt-5 ">
           <div className="flex w-[90vw] justify-between m-auto px-5">
-            <p className="text-[rgb(0,0,128)] font-bold text-3xl">
+            <p className="text-[var(--second-color)] font-bold text-3xl">
               Flash Deals
             </p>
             <Link href="flashDeals">
-              <p className="text-[rgb(0,0,128)] font-bold text-xl">
+              <p className="text-[var(--second-color)] font-bold text-xl">
                 See All &#8594;
               </p>
             </Link>
@@ -82,7 +82,7 @@ function Bestdeals() {
                   key={data.id}
                 >
                   <img src={data.image} className="w-32" />
-                  <p className="flex flex-col bg-[gold] w-14 text-center absolute top-0 right-0">
+                  <p className="flex flex-col bg-[var(--fifth-color)] w-14 text-center absolute top-0 right-0">
                     <span>{data.offer}</span>
                     OFF
                   </p>

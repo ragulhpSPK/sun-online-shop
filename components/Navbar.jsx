@@ -7,11 +7,13 @@ function Navbar() {
     <div className="h-24 bg-[white] shadow-md shadow-slate-100">
       <div className="w-[90vw] m-auto flex justify-around gap-x-72">
         <div className="flex pt-2">
-          <p className="text-md font-bold text-[rgb(0,0,128)]">Follow us On</p>
+          <p className="text-md font-bold text-[var(--first-color)]">
+            Follow us On
+          </p>
           <FacebookIcon className="mr-1" />
           <InstagramIcon className="mr-1" />
         </div>
-        <div className="flex pt-2 font-bold text-[rgb(0,0,128)]">
+        <div className="flex pt-2 font-bold text-[var(--first-color)]">
           <p className="pr-1 text-md">Sign Up</p>
           <span className="h-5 border-r border-black"></span>
           <p className="pl-1 text-md">Login</p>
@@ -49,12 +51,12 @@ function Navbar() {
             className="lg:w-7 xsm:w-[30px]"
             alt="Cart"
           />
-          <p className="absolute  xsm:float-right   bg-[rgb(0,0,128)] top-[-5px] right-0 xsm:h-[20px] xsm:w-[20px] xsm:text-[12px]  lg:h-5  lg:w-5 text-center lg:text-sm text-white rounded-full">
+          <p className="absolute  xsm:float-right   bg-[var(--second-color)] top-[-5px] right-0 xsm:h-[20px] xsm:w-[20px] xsm:text-[12px]  lg:h-5  lg:w-5 text-center lg:text-sm text-white rounded-full">
             2
           </p>
         </div>
         <div className="xsm:hidden lg:block">
-          <p className="lg:text-md text-[rgb(0,0,128)] text-xl lg:font-bold ">
+          <p className="lg:text-md text-[var(--first-color)] text-xl lg:font-bold ">
             For Contact:
           </p>
           <p className="text-black font-semi-bold">123-534-8364</p>

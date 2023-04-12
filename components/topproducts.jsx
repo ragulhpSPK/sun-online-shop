@@ -5,7 +5,9 @@ function Topproducts() {
   return (
     <div className="w-[90vw] m-auto pt-10">
       <div className="text-xl">
-        <h1 className="bg-[rgb(0,0,128)] py-3 px-2 text-white">Top Products</h1>
+        <h1 className="bg-[var(--first-color)] py-3 px-2 text-white">
+          Top Products
+        </h1>
       </div>
       <div className="grid grid-cols-5 gap-x-28 gap-y-2">
         {TopProducts.map((data) => {
@@ -21,7 +23,7 @@ function Topproducts() {
               <div className="h-[5vh] ">
                 <h1 className="text-center">{data.name}</h1>
                 <p className="text-center">Rs:{data.price}</p>
-                <div className="bg-[gold] w-10 h-8 absolute right-0 bottom-0">
+                <div className="bg-[var(--fifth-color)] w-10 h-8 absolute right-0 bottom-0">
                   <img src="/assets/cart2.png" className="w-5 m-auto pt-1" />
                 </div>
               </div>

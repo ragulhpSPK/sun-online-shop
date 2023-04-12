@@ -4,7 +4,7 @@ const cartSchema =
   ({
     image: {
       type: string,
-      required: true,
+      required: false,
     },
 
     name: {

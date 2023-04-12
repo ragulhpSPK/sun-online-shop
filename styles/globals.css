@@ -64,3 +64,10 @@ display: block !important;
   background-color: transparent !important;
 }
 
+:root{
+  --first-color:#953ba0;
+  --second-color:#943074;
+  --third-color:#d298ca;
+  --four-color:#cb7bcc;
+  --fifth-color:#eeb816;
+}

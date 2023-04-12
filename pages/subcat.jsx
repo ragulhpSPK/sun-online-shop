@@ -94,9 +94,12 @@ function Subcat() {
             <div
               className="h-[35vh] w-[14vw] shadow-lg mt-20 ml-5 border-2 relative"
               key={data.id}
+              onClick={() => {
+                router.push({ pathname: `/product/${data.id}`, query: data });
+              }}
             >
-              <div className="h-[25vh] pt-10">
-                <img src={data.image} className="w-auto h-52 m-auto p-5" />
+              <div className="h-[25vh] pt-5">
+                <img src={data.image} className="w-auto h-[25vh] m-auto p-5" />
               </div>
               <p className="text-center">{data.name}</p>
               <p className="text-center">{data.price}</p>

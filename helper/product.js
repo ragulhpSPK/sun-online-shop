@@ -96,7 +96,7 @@ export const Cat = [
     price: "Rs:114800",
     cat_id: 1,
     subcat: 1,
-    image: "/assets/sam.png",
+    image: "/assets/redmi1.jpg",
     offer: "2%",
   },
   {

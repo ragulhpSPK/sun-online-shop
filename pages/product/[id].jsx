@@ -1,15 +1,15 @@
 import { useState, useRef } from "react";
 import React from "react";
 import styles from "../../styles/zoom.module.css";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/redux/cartSlice";
+import { useRouter } from "next/router";
+import { AddCart } from "@/helper/Addcart";
 
 export default function App() {
-  const images = [
-    "/assets/redmi1.jpg",
-    "/assets/redmi2.jpg",
-    "/assets/redmi3.jpg",
-    "/assets/redmi4.jpg",
-    "/assets/redmi5.jpg",
-  ];
+  const [addcart, setAddCart] = useState();
+  const router = useRouter();
+  const images = [];
 
   const [img, setImg] = useState(images[0]);
 
@@ -31,11 +31,16 @@ export default function App() {
       refs.current.push(el);
     }
   };
+
+  const result = AddCart.filter((data) => {
+    return data.product_id == router.query.id;
+  });
+
   return (
     <div className="h-[100vh] flex justify-evenly">
       <div className={styles.container}>
         <div className={styles.left}>
-          <div className={styles.left_2}>
+          <div className={`${styles.left_2} pl-24`}>
             {/* <ReactImageMagnify {...{
 								    smallImage:{
 								        alt:'not',
@@ -52,7 +57,7 @@ export default function App() {
 							className={
 								styles.img
 							}/> */}
-            <img src={img} alt="product" />
+            <img src={img} alt="product" className="h-[60vh]" />
           </div>
           <div className={styles.left_1}>
             {images.map((image, i) => {
@@ -71,43 +76,28 @@ export default function App() {
           </div>
         </div>
       </div>
-      <div className="pt-32 w-[60vw]">
-        <h1 className="text-3xl font-semibold">
-          REDMI Note 12 Pro 5G (Onyx Black, 128 GB) (6 GB RAM)
-        </h1>
-        <p className="text-2xl text-slate-800 pt-1">Rs:25999</p>
-        <h2 className="text-2xl pt-5">Product Specifications</h2>
-        <li className="text-2xl pt-1">8 GB RAM | 128 GB ROM</li>
-        <li className="text-2xl pt-1">16.94 cm (6.67 inch) Full HD Display</li>
-        <li className="text-2xl pt-1">
-          50MP (OIS) + 8MP + 2MP | 16MP Front Camera
-        </li>
-        <li className="text-2xl pt-1">5000 mAh Lithium Polymer Battery</li>
-        <li className="text-2xl pt-1">Mediatek Dimensity 1080 Processor</li>
-        <div className="w-[100%] pt-5">
-          <label for="quantity" className="p-5 font-light text-xl">
-            Qty
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="5"
-            defaultValue={1}
-            defaultChecked
-            id="quantity"
-            name="quantity"
-            className="w-12  border-2 border-black "
-          />
-        </div>
-        <div className="pt-10 flex justify-between w-[15vw]">
-          <button className="bg-[rgb(0,0,128)] text-[#fff] text-2xl rounded-md px-3 h-14 py-2">
-            Add to Cart
-          </button>
-          <button className="bg-[rgb(0,0,128)] text-[#fff] text-2xl rounded-md h-14 px-3 py-2">
-            Buy Now
-          </button>
-        </div>
-      </div>
+      {result.map((data) => {
+        return (
+          <div className="pt-32 w-[60vw]">
+            <h1 className="text-2xl font-semibold">{data.producttitle}</h1>
+            <p className="text-xl text-slate-800 pt-1">Rs:{data.price}</p>
+            <h2 className="text-xl pt-5">Product Specifications</h2>
+            {data.highlights.map((res) => {
+              return <li className="text-xl pt-1">{res}</li>;
+            })}
+
+            <div className="pt-10 flex justify-between w-[15vw]">
+              <button className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md px-3 h-12 py-2">
+                Add to Cart
+              </button>
+              <button className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md h-12 px-3 py-2">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        );
+      })}
+      ;
     </div>
   );
 }
