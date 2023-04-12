@@ -9,7 +9,13 @@ import { AddCart } from "@/helper/Addcart";
 export default function App() {
   const [addcart, setAddCart] = useState();
   const router = useRouter();
-  const images = [];
+  const images = [
+    "/assets/redmi1.jpg",
+    "/assets/redmi2.jpg",
+    "/assets/redmi3.jpg",
+    "/assets/redmi4.jpg",
+    "/assets/redmi5.jpg",
+  ];
 
   const [img, setImg] = useState(images[0]);
 
