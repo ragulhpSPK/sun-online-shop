@@ -1,101 +1,174 @@
-import React, { useState } from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import styles from "../../styles/Home.module.css";
-import CloseIcon from "@mui/icons-material/Close";
+import {
+  Collapse,
+  Form,
+  Modal,
+  Table,
+  Input,
+  Button,
+  notification,
+} from "antd";
+import React, { useEffect } from "react";
+import Sidenavbar from "./Sidenavbar";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import {
+  createCatagory,
+  getAllCatagory,
+  updateCatagory,
+  deleteCatagory,
+} from "../../helper/utilities/apiHelper";
+import { get } from "lodash";
 
-function Categories() {
-  const [category, setCategory] = useState(false);
-  const [dlt, setDlt] = useState(false);
-  return (
-    <div className="pl-20 pt-10">
-      <div className="overflow-x-auto ">
-        <table className="table  w-[70vw] ">
-          <thead>
-            <tr>
-              <th className="text-xl font-medium">Id</th>
-              <th className="text-xl font-medium">Category</th>
-              <th className="text-xl font-medium">SubCategory</th>
-              <th className="text-xl font-medium">actions</th>
-            </tr>
-          </thead>
-          <tbody className="text-xl">
-            <tr>
-              <td>24398....</td>
-              <td>mobile</td>
-              <td>Mi</td>
-              <td className="flex justify-between items-center gap-5 h-32 w-32">
-                <label
-                  htmlFor="my-modal-3"
-                  className="rounded-md h-10 w-12 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
-                >
-                  <EditIcon
-                    onClick={() => {
-                      setCategory(true);
-                    }}
-                  />
-                </label>
-                <a
-                  href="#my-modal-2"
-                  className=" rounded-md h-10 w-12 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
-                  onClick={() => {
-                    setDlt(true);
-                  }}
-                >
-                  <DeleteIcon />
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div className="w-[80vw] flex justify-center h-[50vh]">
-        {category ? (
-          <div>
-            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-            <div className="modal ">
-              <form id={styles.form} className="h-[350px] w-[20vw] relative">
-                Update Categories
-                <input type="text" class="input" placeholder="Category" />
-                <input type="text" class="input" placeholder="Sub Category" />
-                <button className="text-black">Update</button>
-                <CloseIcon
-                  className="text-black  absolute top-0 right-0 m-2 w-10"
-                  onClick={() => setCategory(false)}
-                />
-              </form>
-            </div>
+const { Panel } = Collapse;
+
+const categories = () => {
+  const [form] = Form.useForm();
+  const [open, setOpen] = React.useState(false);
+  const [data, setData] = React.useState([]);
+  const [updateId, setUpdateId] = React.useState("");
+
+  const getCategory = async () => {
+    try {
+      const res = await getAllCatagory();
+      setData(get(res, "data.data", []));
+    } catch (err) {
+      notification.error({
+        message: "something went wrong",
+      });
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const handleFinish = async (values) => {
+    if (updateId === "") {
+      try {
+        await createCatagory(values);
+        notification.success({ message: "Category Added successfully" });
+        form.resetFields();
+        setOpen(false);
+        getCategory();
+      } catch (err) {
+        setOpen(false);
+        notification.success({ message: "Somthing went wrong" });
+      }
+    } else {
+      try {
+        const formData = {
+          data: values,
+          id: updateId,
+        };
+        await updateCatagory(formData);
+        notification.success({ message: "Category Updated successfully" });
+        form.resetFields();
+        setOpen(false);
+        setUpdateId("");
+        getCategory();
+      } catch (err) {
+        setOpen(false);
+        notification.success({ message: "Somthing went wrong" });
+      }
+    }
+  };
+
+  const handleEdit = (value) => {
+    setUpdateId(value._id);
+    setOpen(true);
+    form.setFieldsValue(value);
+  };
+
+  const handleDelete = async (value) => {
+    try {
+      await deleteCatagory(value._id);
+      notification.success({ message: "Category Deleted successfully" });
+      getCategory();
+    } catch (err) {
+      notification.error({
+        message: "something went wrong",
+      });
+      console.log(err);
+    }
+  };
+
+  const columns = [
+    {
+      title: "Category Name",
+      dataIndex: "name",
+      key: "name",
+      render: (name) => {
+        return <h1 className="text-lg">{name}</h1>;
+      },
+    },
+    {
+      title: "Action",
+      render: (values) => {
+        return (
+          <div className="flex gap-x-5">
+            <EditNoteOutlinedIcon
+              className="!text-md text-green-500 cursor-pointer"
+              onClick={() => handleEdit(values)}
+            />
+            <DeleteOutlineOutlinedIcon
+              className="!text-md text-red-500 cursor-pointer"
+              onClick={() => handleDelete(values)}
+            />
           </div>
-        ) : (
-          ""
-        )}
+        );
+      },
+    },
+  ];
+  return (
+    <div className="flex">
+      <div>
+        <Sidenavbar />
       </div>
-
-      {dlt ? (
-        <div className="modal" id="my-modal-2">
-          <div className="modal-box">
-            <h3 className="text-2xl">
-              Are you sure want to delete this category
-            </h3>
-            <div className="modal-action">
-              <a href="#" className="btn bg-[rgb(0,0,128)]">
-                Yay!
-              </a>
-              <a
-                href="#"
-                className="btn bg-[rgb(0,0,128)]"
-                onClick={() => setDlt(false)}
-              >
-                no
-              </a>
-            </div>
+      <div className="flex flex-col ">
+        <div className="flex flex-col gap-y-10 h-[80vh]">
+          <div
+            className="p-2 !bg-white !shadow-inner cursor-pointer self-end pt-[2vh]"
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
+            <AddOutlinedIcon className="!text-green-600" />
+          </div>
+          <div className="p-2">
+            <Table className="w-[80vw]" dataSource={data} columns={columns} />
           </div>
         </div>
-      ) : (
-        ""
-      )}
+      </div>
+      <Modal open={open} destroyOnClose footer={false}>
+        <Form onFinish={handleFinish} form={form}>
+          <div className="flex flex-col gap-y-2 items-center">
+            <Form.Item
+              className="w-[100%]"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter Category Name!",
+                },
+              ]}
+              name="name"
+            >
+              <Input size="large" placeholder="Category Name" />
+            </Form.Item>
+            <div className="flex flex-row items-end gap-x-2 self-end">
+              <Button type="primary" onClick={() => setOpen(!open)}>
+                Cancel
+              </Button>
+              <Button type="primary" htmlType="submit">
+                {updateId === "" ? "Save" : "Update"}
+              </Button>
+            </div>
+          </div>
+        </Form>
+      </Modal>
     </div>
   );
-}
+};
 
-export default Categories;
+export default categories;

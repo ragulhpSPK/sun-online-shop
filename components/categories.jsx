@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { Grid, Pagination, Navigation, Autoplay } from "swiper";
 import { Category } from "@/helper/categories";
 import { useRouter } from "next/router";
+import { createCatagory } from "../helper/utilities/apiHelper";
 
 function Categories() {
   const router = useRouter();

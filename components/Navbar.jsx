@@ -1,22 +1,21 @@
 import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { Divider } from "@mui/material";
 
 function Navbar() {
   return (
     <div className="h-24 bg-[white] shadow-md shadow-slate-100">
-      <div className="w-[90vw] m-auto flex justify-around gap-x-72">
+      <div className=" bg-[#943074] text-white flex justify-around ">
         <div className="flex pt-2">
-          <p className="text-md font-bold text-[var(--first-color)]">
-            Follow us On
-          </p>
+          <p className="text-md font-bold text-white">follow us On</p>
           <FacebookIcon className="mr-1" />
           <InstagramIcon className="mr-1" />
         </div>
         <div className="flex pt-2 font-bold text-[var(--first-color)]">
-          <p className="pr-1 text-md">Sign Up</p>
-          <span className="h-5 border-r border-black"></span>
-          <p className="pl-1 text-md">Login</p>
+          <p className="pr-1 text-md text-white">Sign Up</p>
+          <Divider orientation="vertical" />
+          <p className="pl-1 text-md text-white">Login</p>
         </div>
       </div>
       <div className="w-screen flex justify-around items-center h-[60%]">
