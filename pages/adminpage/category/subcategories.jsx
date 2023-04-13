@@ -1,45 +1,115 @@
-import { Input, Modal, Table, Form, Button } from "antd";
-import React from "react";
+import { Input, Modal, Table, Form, Button, Select, notification } from "antd";
+import React, { useEffect, useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/Add";
+import {
+  createSubCatagory,
+  getAllCatagory,
+  getAllSubCatagory,
+  updateSubCategory,
+} from "@/helper/utilities/apiHelper";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { get } from "lodash";
 
 const Subcategories = () => {
   const [open, setOpen] = React.useState(false);
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-    },
-  ];
+  const [form] = Form.useForm();
+  const { Option } = Select;
+  const [categoryData, setcategoryData] = useState([]);
+  const [subCat, setSubCat] = useState([]);
+  const [update, setUpdate] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const result = [await getAllCatagory(), await getAllSubCatagory()];
+      setcategoryData(get(result, "[0].data.data", []));
+      setSubCat(get(result, "[1].data.data", []));
+      form.resetFields();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleFinish = async (value) => {
+    if (update === "") {
+      try {
+        await createSubCatagory(value);
+        fetchData();
+        notification.success({ message: "subcategories added successfully" });
+        form.resetFields();
+      } catch (err) {
+        notification.error({ message: "something went wrong" });
+      }
+    } else {
+      try {
+        const formData = {
+          data: value,
+          id: update,
+        };
+
+        await updateSubCategory(formData);
+        notification.success({ message: " successfully updated" });
+        form.resetFields();
+        setOpen(false);
+        updateSubCategory();
+      } catch (err) {
+        notification.error({ message: "Something went wrong" });
+        setOpen(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleEdit = (value) => {
+    setOpen(true);
+    setUpdate(value._id);
+    form.setFieldsValue(value);
+  };
+
+  // const dataSource = [
+  //   {
+  //     key: "1",
+  //     name: "Mike",
+  //     age: 32,
+  //     address: "10 Downing Street",
+  //   },
+  //   {
+  //     key: "2",
+  //     name: "John",
+  //     age: 42,
+  //     address: "10 Downing Street",
+  //   },
+  // ];
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "Subcategory Name",
+      dataIndex: "subcategoryname",
+      key: "subcategoryname",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Category Name",
+      dataIndex: "categoryname",
+      key: "categoryname",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "Action",
+      render: (value) => {
+        return (
+          <div className="flex gap-x-5">
+            <EditNoteOutlinedIcon
+              className="text-green-500 !cursor-pointer"
+              onClick={() => handleEdit(value)}
+            />
+            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" />
+          </div>
+        );
+      },
     },
   ];
-
-  const cancelHandler = () => {
-    setOpen(!open);
-  };
 
   return (
     <div className="flex flex-col w-[80vw]">
@@ -48,19 +118,16 @@ const Subcategories = () => {
           className="p-2 !bg-white !shadow-inner cursor-pointer self-end  pt-[2vh]"
           onClick={() => {
             setOpen(true);
+            setUpdate("");
           }}
         >
           <AddOutlinedIcon className="!text-green-600 " />
         </div>
         <div>
-          <Table
-            dataSource={dataSource}
-            columns={columns}
-            className="w-[100vw]"
-          />
+          <Table dataSource={subCat} columns={columns} className="w-[100vw]" />
         </div>
-        <Modal footer={false} open={open} onCancel={cancelHandler}>
-          <Form>
+        <Modal footer={false} open={open} destroyOnClose>
+          <Form onFinish={handleFinish} form={form}>
             <Form.Item
               rules={[
                 {
@@ -68,13 +135,28 @@ const Subcategories = () => {
                   message: "please Enter SubCategory",
                 },
               ]}
-              className="flex flex-col gap-y-5"
+              name="subcategoryname"
+              className="flex flex-col"
             >
-              <Input size="large" placeholder="Enter Product Name" />
-              <Input size="large" placeholder="Enter SubCategory" />
-              <Input size="large" placeholder="Enter Category" />
-              <Input size="large" placeholder="Enter price" />
+              <div className="flex flex-col gap-10">
+                <Input size="large" placeholder="Enter SubCategory Name" />
+              </div>
             </Form.Item>
+            <Form.Item
+              name="categoryname"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Select placeholder="Select Category">
+                {categoryData.map((res) => {
+                  return <Option value={res.name}>{res.name}</Option>;
+                })}
+              </Select>
+            </Form.Item>
+
             <div className="flex gap-5 justify-end ">
               <Button
                 type="Primary"
@@ -88,7 +170,7 @@ const Subcategories = () => {
                 className="bg-white shadow-xl hover:bg-blue-500 !text-black"
                 htmlType="submit"
               >
-                Save
+                {update === "" ? "Save" : "Update"}
               </Button>
             </div>
           </Form>

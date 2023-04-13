@@ -70,7 +70,7 @@ const Categories = () => {
         getCategory();
       } catch (err) {
         setOpen(false);
-        notification.success({ message: "Somthing went wrong" });
+        notification.error({ message: "Somthing went wrong" });
       }
     }
   };

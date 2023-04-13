@@ -23,7 +23,7 @@ const CategoryHome = () => {
         <Sidenavbar />
       </div>
       <div className="pl-5">
-        <Tabs items={items} />
+        <Tabs destroyInactiveTabPane items={items} />
       </div>
     </div>
   );

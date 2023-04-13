@@ -3,6 +3,7 @@ import Catagory from "../../../models/catagories";
 
 export default async function catagoryController(req, res) {
   dbconnect();
+
   switch (req.method) {
     case "GET":
       try {

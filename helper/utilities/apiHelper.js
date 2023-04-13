@@ -17,3 +17,16 @@ export const deleteCatagory = (formData) => {
   return axios.delete(`/api/catagory/${formData}`);
 };
 // categories ending
+
+//SubCategory Starting
+export const createSubCatagory = (formData) => {
+  return axios.post("/api/subcategory", formData);
+};
+export const getAllSubCatagory = () => {
+  return axios.get("/api/subcategory");
+};
+
+export const updateSubCategory = (formData) => {
+  console.log("JKH", formData);
+  return axios.put("/api/subcategory", formData);
+};
