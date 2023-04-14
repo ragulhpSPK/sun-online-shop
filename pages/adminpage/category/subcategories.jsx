@@ -6,6 +6,7 @@ import {
   getAllCatagory,
   getAllSubCatagory,
   updateSubCategory,
+  deleteSubCategory
 } from "@/helper/utilities/apiHelper";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -59,6 +60,18 @@ const Subcategories = () => {
     }
   };
 
+  const handleDelete = async (value) => {
+    try {
+    
+      await deleteSubCategory(value._id)
+      notification.success({message:"Subcategory deleted"})
+    } catch (err) {
+      notification.error({
+        message: "something went wrong",
+      });
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -104,7 +117,7 @@ const Subcategories = () => {
               className="text-green-500 !cursor-pointer"
               onClick={() => handleEdit(value)}
             />
-            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" />
+            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" onClick={() => handleDelete(value)}/>
           </div>
         );
       },

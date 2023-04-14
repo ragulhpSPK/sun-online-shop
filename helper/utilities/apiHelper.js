@@ -14,6 +14,7 @@ export const updateCatagory = (formData) => {
 };
 
 export const deleteCatagory = (formData) => {
+  
   return axios.delete(`/api/catagory/${formData}`);
 };
 // categories ending
@@ -27,6 +28,10 @@ export const getAllSubCatagory = () => {
 };
 
 export const updateSubCategory = (formData) => {
-  console.log("JKH", formData);
   return axios.put("/api/subcategory", formData);
 };
+
+
+export const deleteSubCategory = (formData) => {
+  return axios.delete(`/api/subCategory${formData}`)
+}

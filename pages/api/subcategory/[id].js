@@ -1,7 +1,7 @@
 import dbconnect from "../../../connection/conn";
-import Catagory from "../../../models/catagories";
+import subCategory from "../../../models/catagories";
 
-export default async function catagoryController(req, res) {
+export default async function subCategoryControler(req, res) {
   dbconnect();
   console.log("cat",dbconnect())
   switch (req.method) {
@@ -9,7 +9,7 @@ export default async function catagoryController(req, res) {
       break;
     case "DELETE":
       try {
-        await Catagory.findByIdAndDelete({ _id: req.query.id });
+        await subCategory.findByIdAndDelete({ _id: req.query.id });
         return res.status(200).send({ message: "deleted" });
       } catch (err) {
         return res.status(500).send({ message: "failed" });
