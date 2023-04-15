@@ -3,7 +3,7 @@ import React from "react";
 
 function Topproducts() {
   return (
-    <div className="w-[90vw] m-auto pt-10">
+    <div className="w-[80vw] m-auto pt-10">
       <div className="text-xl">
         <h1 className="bg-[var(--first-color)] py-3 px-2 text-white">
           Top Products

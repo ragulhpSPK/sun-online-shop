@@ -19,7 +19,7 @@ function Navbar() {
         </div>
       </div>
       <div className="w-screen flex justify-around items-center h-[60%]">
-        <div>
+        <div className="pl-16">
           <img src="/assets/sunn.png" className="xl:w-20 xsm:w-14" alt="Logo" />
         </div>
         <div className="pt-2 relative lg:w-[30vw] xsm:w-[50vw] text-gray-600">
@@ -54,7 +54,7 @@ function Navbar() {
             2
           </p>
         </div>
-        <div className="xsm:hidden lg:block">
+        <div className="xsm:hidden lg:block pr-[70px]">
           <p className="lg:text-md text-[var(--first-color)] text-xl lg:font-bold ">
             For Contact:
           </p>

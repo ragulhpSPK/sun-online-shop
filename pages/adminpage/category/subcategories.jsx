@@ -20,69 +20,6 @@ const Subcategories = () => {
   const [subCat, setSubCat] = useState([]);
   const [update, setUpdate] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const result = [await getAllCatagory(), await getAllSubCatagory()];
-      setcategoryData(get(result, "[0].data.data", []));
-      setSubCat(get(result, "[1].data.data", []));
-      form.resetFields();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleFinish = async (value) => {
-    if (update === "") {
-      try {
-        await createSubCatagory(value);
-        fetchData();
-        notification.success({ message: "subcategories added successfully" });
-        form.resetFields();
-      } catch (err) {
-        notification.error({ message: "something went wrong" });
-      }
-    } else {
-      try {
-        const formData = {
-          data: value,
-          id: update,
-        };
-
-        await updateSubCategory(formData);
-        notification.success({ message: " successfully updated" });
-        form.resetFields();
-        setOpen(false);
-        fetchData();
-      } catch (err) {
-        notification.error({ message: "Something went wrong" });
-        setOpen(false);
-      }
-    }
-  };
-
-  const handleDelete = async (value) => {
-    try {
-      await deleteSubCategory(value._id);
-      fetchData();
-      notification.success({ message: "Subcategory deleted" });
-    } catch (err) {
-      notification.error({
-        message: "something went wrong",
-      });
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const handleEdit = (value) => {
-    console.log(value);
-    setOpen(true);
-    setUpdate(value._id);
-    form.setFieldsValue(value);
-  };
-
   // const dataSource = [
   //   {
   //     key: "1",
@@ -98,6 +35,59 @@ const Subcategories = () => {
   //   },
   // ];
 
+  const fetchData = async () => {
+    try {
+      const result = [await getAllCatagory(), await getAllSubCatagory()];
+      setcategoryData(get(result, "[0].data.data", []));
+      setSubCat(get(result, "[1].data.data", []));
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleFinish = async (value) => {
+    if (update === "") {
+      try {
+        await createSubCatagory(value);
+        notification.success({ message: "Subcategory added successfully" });
+        fetchData();
+      } catch (err) {
+        notification.error({ message: "something went wrong" });
+      }
+    } else {
+      try {
+        const formdata = {
+          data: value,
+          id: update,
+        };
+        await updateSubCategory(formdata);
+        notification.success({ message: "Subcategory updated successfully" });
+      } catch (err) {
+        notification.error({ message: "something went wrong" });
+      }
+    }
+  };
+
+  const handleEdit = (value) => {
+    console.log(value);
+    setOpen(true);
+    setUpdate(value._id);
+    form.setFieldsValue(value);
+  };
+  const handleDelete = async (value) => {
+    try {
+      await deleteSubCategory(value._id);
+      notification.success({ message: "Subcategory deleted successfully" });
+      fetchData();
+    } catch (err) {
+      notification.error({ message: "something went wrong" });
+    }
+  };
   const columns = [
     {
       title: "Subcategory Name",
@@ -144,7 +134,7 @@ const Subcategories = () => {
           <Table dataSource={subCat} columns={columns} className="w-[100vw]" />
         </div>
         <Modal footer={false} open={open} destroyOnClose>
-          <Form onFinish={handleFinish} form={form}>
+          <Form form={form} onFinish={handleFinish}>
             <Form.Item
               rules={[
                 {

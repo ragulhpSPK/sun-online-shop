@@ -6,8 +6,10 @@ import {
   Input,
   Button,
   notification,
+  Upload,
 } from "antd";
-import React, { useEffect } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 import Sidenavbar from "../Sidenavbar";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
@@ -21,12 +23,29 @@ import {
 import { get } from "lodash";
 
 const { Panel } = Collapse;
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
 const Categories = () => {
   const [form] = Form.useForm();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [updateId, setUpdateId] = React.useState("");
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [fileList, setFileList] = React.useState([
+    {
+      uid: "-4",
+      name: "image.png",
+      status: "done",
+    },
+  ]);
 
   const getCategory = async () => {
     try {
@@ -36,7 +55,6 @@ const Categories = () => {
       notification.error({
         message: "something went wrong",
       });
-      console.log(err);
     }
   };
 
@@ -90,7 +108,6 @@ const Categories = () => {
       notification.error({
         message: "something went wrong",
       });
-      console.log(err);
     }
   };
 
@@ -121,6 +138,38 @@ const Categories = () => {
       },
     },
   ];
+
+  // const handleCancel = () => setPreviewOpen(false);
+  // const handlePreview = async (file) => {
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj);
+  //   }
+  //   setPreviewImage(file.url || file.preview);
+  //   setPreviewOpen(true);
+  //   setPreviewTitle(
+  //     file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
+  //   );
+  // };
+
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </div>
+  );
+
+  const props = {
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    onChange: handleChange,
+    multiple: true,
+  };
   return (
     <>
       <div className="flex flex-col">
@@ -152,6 +201,43 @@ const Categories = () => {
               name="name"
             >
               <Input size="large" placeholder="Category Name" />
+            </Form.Item>
+
+            <Form.Item
+              className="w-[100%]"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter Category Name!",
+                },
+              ]}
+              name="name"
+            >
+              <>
+                <Upload
+                  fileList={fileList}
+                  listType="picture-card"
+                  // onPreview={handlePreview}
+                  onChange={handleChange}
+                  {...props}
+                >
+                  {fileList.length >= 8 ? null : uploadButton}
+                </Upload>
+                <Modal
+                  open={previewOpen}
+                  // title={previewTitle}
+                  footer={null}
+                  // onCancel={handleCancel}
+                >
+                  <img
+                    alt="example"
+                    style={{
+                      width: "100%",
+                    }}
+                    // src={previewImage}
+                  />
+                </Modal>
+              </>
             </Form.Item>
             <div className="flex flex-row items-end gap-x-2 self-end">
               <Button type="primary" onClick={() => setOpen(!open)}>

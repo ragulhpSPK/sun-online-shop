@@ -9,8 +9,8 @@ export default async function subCategoryControler(req, res) {
       break;
     case "DELETE":
       try {
-        const r = await subCategory.findByIdAndDelete({ _id: req.query.id });
-        console.log(r);
+        await subCategory.findByIdAndDelete({ _id: req.query.id });
+
         return res.status(200).send({ message: "deleted" });
       } catch (err) {
         return res.status(500).send({ message: "failed" });

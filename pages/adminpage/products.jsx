@@ -1,17 +1,40 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { PlusOutlined } from "@ant-design/icons";
-import AddCardIcon from "@mui/icons-material/AddCard";
-import { Button, Divider, Input, Modal, Select, Space, Form } from "antd";
+import AddOutlinedIcon from "@mui/icons-material/AddCard";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import {
+  Button,
+  Divider,
+  Input,
+  Modal,
+  Select,
+  Space,
+  Form,
+  Table,
+  notification,
+} from "antd";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import FileUpload from "./imageupload";
+import Sidenavbar from "./Sidenavbar";
+import {
+  createProducts,
+  getAllCatagory,
+  getAllSubCatagory,
+} from "../../helper/utilities/apiHelper";
+import { get } from "lodash";
 
 function Products() {
   const [edit, setEdit] = useState(false);
   const [dlt, setDlt] = useState(false);
   const [add, setAdd] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+  const { Option } = Select;
 
   const QuillNoSSRWrapper = dynamic(import("react-quill"), {
     ssr: false,
@@ -62,9 +85,9 @@ function Products() {
   };
 
   const changehandler = (value) => {
-    // form.setFieldsValue({
-    //   note: value,
-    // });
+    form.setFieldsValue({
+      value,
+    });
     console.log(value);
   };
 
@@ -74,149 +97,189 @@ function Products() {
     console.log("clcked");
   };
 
+  const fetchData = async () => {
+    try {
+      const result = [await getAllCatagory(), await getAllSubCatagory()];
+
+      setCategory(get(result, "[0].data.data", []));
+      setSubCategory(get(result, "[1].data.data", []));
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleFinish = async (value) => {
+    console.log("sjk", value);
+    try {
+      await createProducts(value);
+      notification.success({ message: "products added successfully" });
+    } catch (err) {
+      notification.success({ message: "Something went wrong" });
+    }
+  };
+
+  // const dataSource = [
+  //   {
+  //     key: "1",
+  //     name: "Mike",
+  //     age: 32,
+  //     address: "10 Downing Street",
+  //   },
+  //   {
+  //     key: "2",
+  //     name: "John",
+  //     age: 42,
+  //     address: "10 Downing Street",
+  //   },
+  // ];
+
+  const columns = [
+    {
+      title: "Subcategory Name",
+      dataIndex: "subcategoryname",
+      key: "subcategoryname",
+    },
+    {
+      title: "Category Name",
+      dataIndex: "categoryname",
+      key: "categoryname",
+    },
+    {
+      title: "Action",
+      render: (value) => {
+        return (
+          <div className="flex gap-x-5">
+            <EditNoteOutlinedIcon className="text-green-500 !cursor-pointer" />
+            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" />
+          </div>
+        );
+      },
+    },
+  ];
+
   return (
-    <div>
-      <div className="w-[80vw] pt-10">
-        <AddCardIcon
-          className="float-right text-3xl"
-          onClick={() => {
-            setAdd(true);
-          }}
-        />
+    <div className="flex">
+      <div>
+        <Sidenavbar />
       </div>
-      <div className="p-10">
-        <div className="overflow-x-auto">
-          <table className="table table-zebra w-[80vw] border">
-            <thead>
-              <tr>
-                <th className="text-xl font-medium">Image</th>
-                <th className="text-xl font-medium">Id</th>
-                <th className="text-xl font-medium">Product</th>
-                <th className="text-xl font-medium">Price</th>
-                <th className="text-xl font-medium">Descrption</th>
-                <th className="text-xl font-medium">Highlights</th>
-                <th className="text-xl font-medium">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="h-32">
-                <td>
-                  <img src="/assets/blutooth_speaker.png" className="w-20" />
-                </td>
-                <td>79498....</td>
-                <td>Boat Speaker 982</td>
-                <td>Rs:300</td>
-                <td>Most Quality Products and the sounds so good to hear...</td>
-                <td>10mm,Dual Steroble speakers,base 3.5mm</td>
-                <td className="flex justify-between items-center  h-32">
-                  <label
-                    htmlFor="my-modal-3"
-                    className="rounded-md h-10 w-10 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
-                  >
-                    <EditIcon
-                      onClick={() => {
-                        setEdit(true);
-                      }}
-                    />
-                  </label>
-                  <a
-                    href="#my-modal-2"
-                    className="rounded-md h-10 w-10 bg-[rgb(0,0,128)] text-white border-none text-center pt-1"
-                    onClick={() => {
-                      setDlt(true);
-                    }}
-                  >
-                    <DeleteIcon />
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      <div>
+        <div className="w-[80vw] pt-10" onClick={() => setOpen(!open)}>
+          <AddOutlinedIcon className="!text-green-600 float-right" />
         </div>
-      </div>
-      <Modal width={600} open={edit || add} onCancel={handleCancel}>
-        <Form
-          className="flex flex-col gap-8 relative"
-          form={form}
-          name="control-hooks"
-          onFinish={onFinish}
-          style={{
-            maxWidth: 600,
+        <div className="p-10">
+          <div className="overflow-x-auto">
+            <Table className="w-[100vw]" columns={columns} />
+          </div>
+        </div>
+        <Modal
+          width={600}
+          open={open}
+          onCancel={handleCancel}
+          okButtonProps={{
+            style: {
+              display: "none",
+            },
+          }}
+          cancelButtonProps={{
+            style: {
+              display: "none",
+            },
           }}
         >
-          {edit ? (
-            <h1 className="text-4xl">Update Products</h1>
-          ) : (
-            <h1 className="text-4xl">Add Products</h1>
-          )}
-          <div className="flex flex-col gap-8">
-            <input
-              type="text"
-              className="border-2 border-[rgb(0,0,128)] h-12 rounded-md pl-2 text-2xl focus:bg-[rgb(0,0,128)] focus:text-white"
-              placeholder="Product"
-            />
-            <input
-              type="text"
-              className="border-2 border-[rgb(0,0,128)] h-12 rounded-md pl-2 text-2xl focus:bg-[rgb(0,0,128)] focus:text-white"
-              placeholder="Price"
-            />
-          </div>
-
-          <QuillNoSSRWrapper
-            modules={modules}
-            formats={formats}
-            theme="snow"
-            onChange={changehandler}
-          />
-
-          <div>
-            <FileUpload />
-          </div>
-
-          {/* <Form.Item
-            name="note"
-            label="Product Details"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
+          <Form
+            className="flex flex-col gap-8 relative"
+            form={form}
+            onFinish={handleFinish}
+            style={{
+              maxWidth: 600,
+            }}
           >
-            <Input className="focus:bg-[rgb(0,0,128)] border-2 text-2xl focus:text-white border-[rgb(0,0,128)] hover:border-[rgb(0,0,128)]" />
-          </Form.Item> */}
-          {/* <Button
-            type="link"
-            className="text-black border border-slate-200 w-[90px] h-[35px] absolute bottom-[-45px] right-40"
-            htmlType="button"
-          >
-            Update
-          </Button> */}
-        </Form>
-      </Modal>
-      <div>
-        {dlt ? (
-          <div className="modal" id="my-modal-2">
-            <div className="modal-box">
-              <h3 className="text-2xl">
-                Are you sure want to delete this product
-              </h3>
-              <div className="modal-action">
-                <a href="#" className="btn bg-[rgb(0,0,128)]">
-                  Yay!
-                </a>
-                <a
-                  href="#"
-                  className="btn bg-[rgb(0,0,128)]"
-                  onClick={() => setDlt(false)}
-                >
-                  no
-                </a>
-              </div>
+            <Form.Item
+              name="title"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="Enter product Name" />
+            </Form.Item>
+            <Form.Item
+              name="price"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input size="large" placeholder="Enter product Price" />
+            </Form.Item>
+
+            <Form.Item
+              name="categoryname"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Select placeholder="Select Category">
+                {category.map((res) => {
+                  return <Option value={res.name}>{res.name}</Option>;
+                })}
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              name="categoryname"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Select placeholder="Select SubCategory">
+                {subCategory.map((res) => {
+                  return (
+                    <Option value={res.subcategoryname}>
+                      {res.subcategoryname}
+                    </Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+
+            <QuillNoSSRWrapper
+              modules={modules}
+              formats={formats}
+              theme="snow"
+              onChange={changehandler}
+              note="description"
+            />
+
+            <div>
+              <FileUpload />
             </div>
-          </div>
-        ) : (
-          ""
-        )}
+            <div className="flex gap-5 justify-end ">
+              <Button
+                type="Primary"
+                className="bg-white shadow-xl hover:bg-blue-500 !text-black"
+                onClick={() => setOpen(!open)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="Primary"
+                className="bg-white shadow-xl hover:bg-blue-500 !text-black"
+                htmlType="submit"
+              >
+                Save
+              </Button>
+            </div>
+          </Form>
+        </Modal>
       </div>
     </div>
   );

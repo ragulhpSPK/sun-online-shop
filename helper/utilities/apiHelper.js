@@ -33,3 +33,8 @@ export const updateSubCategory = (formData) => {
 export const deleteSubCategory = (formData) => {
   return axios.delete(`/api/subcategory/${formData}`);
 };
+//SubCategory ended
+
+export const createProducts = (formData) => {
+  return axios.post("/api/products", formData);
+};

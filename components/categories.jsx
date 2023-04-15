@@ -14,7 +14,7 @@ function Categories() {
   return (
     <div className="w-screen pt-10">
       <div className="w-screen flex justify-center">
-        <div className="flex h-[7vh] text-[rgb(0,0,128)] justify-between items-center  w-[90vw]  rounded-sm">
+        <div className="flex h-[7vh] text-[--first-color] justify-between items-center  w-[80vw]  rounded-sm">
           <h1 className=" text-2xl text-center pt-3 font-semibold">
             Shop By Category
           </h1>
@@ -25,38 +25,7 @@ function Categories() {
           </Link>
         </div>
       </div>
-      <div className="h-[40vh] w-[90vw] m-auto shadow-xl">
-        {/* <Swiper
-              slidesPerView={"4"}
-              spaceBetween={30}
-              pagination={{
-                clickable: false,
-              }}
-              modules={[Autoplay]}
-              autoplay={{ delay: 3000 }}
-              className="mySwiper w-[90vw] h-[100%]"
-            >
-              {ProductsList.map((data) => {
-                return (
-                  <SwiperSlide
-                    className="p-5  border  shadow-xl flex justify-between hover:shadow-gray-500"
-                    key={data.id}
-                  >
-                    <div>
-                      <img
-                        src={data.image}
-                        className=" h-[80px] mt-5 float-left hover:scale-110 duration-1000"
-                      />
-                    </div>
-
-                    <div className="pt-10 pl-5">
-                      <h1 className="text-xl w-[50vw] ">{data.category}</h1>
-                      <p className="text-xl">{data.items}</p>
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper> */}
+      <div className="h-[40vh] w-[80vw] m-auto shadow-xl">
         <Swiper
           slidesPerView={7}
           grid={{
@@ -67,7 +36,7 @@ function Categories() {
             clickable: true,
           }}
           autoplay={{ delay: 2000 }}
-          className={`mySwiper flex w-[90vw]`}
+          className={`mySwiper flex w-[80vw]`}
         >
           {Category.map((data) => {
             return (

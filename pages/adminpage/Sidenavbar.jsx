@@ -23,7 +23,7 @@ function Sidenavbar() {
               Products
             </div>
           </Link>
-          <Link href="/adminpage/categories">
+          <Link href="/adminpage/category">
             <div className="flex  m-auto pt-3 bg-[var(--second-color)] pl-2 text-white h-12 w-32 rounded-md mt-3">
               <CategoryIcon />
               Categories
