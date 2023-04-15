@@ -24,6 +24,7 @@ export default async function subCategoryController(req, res) {
       break;
     case "PUT":
       try {
+        console.log(req.body);
         const sub = await subCategory.findByIdAndUpdate(
           { _id: req.body.id },
           req.body.data
@@ -31,6 +32,7 @@ export default async function subCategoryController(req, res) {
         console.log("wdjhu", sub);
         return res.status(200).send({ data: sub });
       } catch (err) {
+        console.log(err);
         return res.status(500).send({ message: "failed" });
       }
   }

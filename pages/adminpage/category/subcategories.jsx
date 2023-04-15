@@ -6,7 +6,7 @@ import {
   getAllCatagory,
   getAllSubCatagory,
   updateSubCategory,
-  deleteSubCategory
+  deleteSubCategory,
 } from "@/helper/utilities/apiHelper";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -52,7 +52,7 @@ const Subcategories = () => {
         notification.success({ message: " successfully updated" });
         form.resetFields();
         setOpen(false);
-        updateSubCategory();
+        fetchData();
       } catch (err) {
         notification.error({ message: "Something went wrong" });
         setOpen(false);
@@ -62,21 +62,22 @@ const Subcategories = () => {
 
   const handleDelete = async (value) => {
     try {
-    
-      await deleteSubCategory(value._id)
-      notification.success({message:"Subcategory deleted"})
+      await deleteSubCategory(value._id);
+      fetchData();
+      notification.success({ message: "Subcategory deleted" });
     } catch (err) {
       notification.error({
         message: "something went wrong",
       });
     }
-  }
+  };
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const handleEdit = (value) => {
+    console.log(value);
     setOpen(true);
     setUpdate(value._id);
     form.setFieldsValue(value);
@@ -117,7 +118,10 @@ const Subcategories = () => {
               className="text-green-500 !cursor-pointer"
               onClick={() => handleEdit(value)}
             />
-            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" onClick={() => handleDelete(value)}/>
+            <DeleteOutlineOutlinedIcon
+              className="text-red-500 !cursor-pointer"
+              onClick={() => handleDelete(value)}
+            />
           </div>
         );
       },
@@ -151,9 +155,7 @@ const Subcategories = () => {
               name="subcategoryname"
               className="flex flex-col"
             >
-              <div className="flex flex-col gap-10">
-                <Input size="large" placeholder="Enter SubCategory Name" />
-              </div>
+              <Input size="large" placeholder="Enter SubCategory Name" />
             </Form.Item>
             <Form.Item
               name="categoryname"

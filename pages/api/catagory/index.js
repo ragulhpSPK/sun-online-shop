@@ -25,7 +25,6 @@ export default async function catagoryController(req, res) {
       break;
     case "PUT":
       try {
-        console.log(req.body);
         const category = await Catagory.findByIdAndUpdate(
           { _id: req.body.id },
           req.body.data
