@@ -15,6 +15,7 @@ import {
   Form,
   Table,
   notification,
+  message,
 } from "antd";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
@@ -24,8 +25,11 @@ import {
   createProducts,
   getAllCatagory,
   getAllSubCatagory,
+  getAllproducts,
+  updateProducts,
+  deleteProducts,
 } from "../../helper/utilities/apiHelper";
-import { get } from "lodash";
+import { get, update } from "lodash";
 
 function Products() {
   const [edit, setEdit] = useState(false);
@@ -34,8 +38,9 @@ function Products() {
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
-  const [value, setValue] = useState([]);
+  const [products, setProducts] = useState([]);
   const { Option } = Select;
+  const [updateId, setUpdateId] = useState([]);
 
   const QuillNoSSRWrapper = dynamic(import("react-quill"), {
     ssr: false,
@@ -85,6 +90,19 @@ function Products() {
     console.log(values);
   };
 
+  const editProducts = (value) => {
+    setUpdateId(value._id);
+    setOpen(!open);
+    form.setFieldsValue(value);
+  };
+
+  const changehandler = (value) => {
+    form.setFieldsValue({
+      value,
+    });
+    console.log(value);
+  };
+
   const handleCancel = () => {
     setAdd(false);
     setEdit(false);
@@ -93,11 +111,18 @@ function Products() {
 
   const fetchData = async () => {
     try {
-      const result = [await getAllCatagory(), await getAllSubCatagory()];
+      const result = [
+        await getAllCatagory(),
+        await getAllSubCatagory(),
+        await getAllproducts(),
+      ];
 
       setCategory(get(result, "[0].data.data", []));
       setSubCategory(get(result, "[1].data.data", []));
-    } catch (err) {}
+      setProducts(get(result, "[2].data.data", []));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -105,16 +130,39 @@ function Products() {
   }, []);
 
   const handleFinish = async (value) => {
-    console.log("sjk", value);
-    try {
-      await createProducts(value);
-      notification.success({ message: "products added successfully" });
-    } catch (err) {
-      notification.success({ message: "Something went wrong" });
+    if (updateId === "") {
+      try {
+        await createProducts(value);
+        notification.success({ message: "products added successfully" });
+      } catch (err) {
+        notification.success({ message: "Something went wrong" });
+      }
+    } else {
+      try {
+        const formData = {
+          data: value,
+          id: updateId,
+        };
+        await updateProducts(formData);
+        notification.success({ message: "products updated successfully" });
+        form.resetFields;
+        setUpdateId("");
+        fetchData();
+      } catch (err) {
+        notification.error({ message: "Something went wrong" });
+      }
     }
   };
 
-  console.log("sd.ksk", value);
+  const deleteHandler = async (value) => {
+    console.log("clicked");
+    try {
+      await deleteProducts(value._id);
+      notification.success({ message: "products deleted successfully" });
+    } catch (err) {
+      notification.error({ message: "Something went wrong" });
+    }
+  };
 
   // const dataSource = [
   //   {
@@ -133,9 +181,14 @@ function Products() {
 
   const columns = [
     {
-      title: "Subcategory Name",
-      dataIndex: "subcategoryname",
-      key: "subcategoryname",
+      title: "title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "price",
+      dataIndex: "price",
+      key: "price",
     },
     {
       title: "Category Name",
@@ -143,12 +196,26 @@ function Products() {
       key: "categoryname",
     },
     {
+      title: "Subcategory Name",
+      dataIndex: "subcategoryname",
+      key: "subcategoryname",
+    },
+
+    {
       title: "Action",
       render: (value) => {
         return (
           <div className="flex gap-x-5">
-            <EditNoteOutlinedIcon className="text-green-500 !cursor-pointer" />
-            <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" />
+            <EditNoteOutlinedIcon
+              className="text-green-500 !cursor-pointer"
+              onClick={() => {
+                editProducts(value);
+              }}
+            />
+            <DeleteOutlineOutlinedIcon
+              className="text-red-500 !cursor-pointer"
+              onClick={() => deleteHandler(value)}
+            />
           </div>
         );
       },
@@ -166,12 +233,17 @@ function Products() {
         </div>
         <div className="p-10">
           <div className="overflow-x-auto">
-            <Table className="w-[100vw]" columns={columns} />
+            <Table
+              className="w-[90vw]"
+              columns={columns}
+              dataSource={products}
+            />
           </div>
         </div>
         <Modal
           width={600}
           open={open}
+          destroyOnClose
           onCancel={handleCancel}
           okButtonProps={{
             style: {
@@ -229,7 +301,7 @@ function Products() {
             </Form.Item>
 
             <Form.Item
-              name="categoryname"
+              name="subcategoryname"
               rules={[
                 {
                   required: true,
@@ -251,7 +323,7 @@ function Products() {
               modules={modules}
               formats={formats}
               theme="snow"
-              onChange={(e) => setValue(e.target.value)}
+              onChange={changehandler}
               note="description"
             />
 
@@ -271,7 +343,7 @@ function Products() {
                 className="bg-white shadow-xl hover:bg-blue-500 !text-black"
                 htmlType="submit"
               >
-                Save
+                {updateId === "" ? "Save" : "Update"}
               </Button>
             </div>
           </Form>

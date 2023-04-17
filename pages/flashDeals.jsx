@@ -45,7 +45,7 @@ function FlashDeals() {
               </div>
             </div>
           </div>
-          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color]  px-3">
+          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color] text-sm font-semibold text-black px-3">
             <span>56%</span>OFF
           </p>
         </div>
@@ -62,7 +62,7 @@ function FlashDeals() {
               </div>
             </div>
           </div>
-          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color] px-3">
+          <p className="flex flex-col absolute top-0 text-sm font-semibold text-black right-0 bg-[--fifth-color] px-3">
             <span>56%</span>OFF
           </p>
         </div>
@@ -79,7 +79,7 @@ function FlashDeals() {
               </div>
             </div>
           </div>
-          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color] px-3">
+          <p className="flex flex-col absolute text-sm font-semibold text-black top-0 right-0 bg-[--fifth-color] px-3">
             <span>56%</span>OFF
           </p>
         </div>
@@ -96,7 +96,7 @@ function FlashDeals() {
               </div>
             </div>
           </div>
-          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color] px-3">
+          <p className="flex flex-col text-sm font-semibold text-black absolute top-0 right-0 bg-[--fifth-color] px-3">
             <span>56%</span>OFF
           </p>
         </div>
@@ -113,7 +113,7 @@ function FlashDeals() {
               </div>
             </div>
           </div>
-          <p className="flex flex-col absolute top-0 right-0 bg-[--fifth-color] px-3">
+          <p className="flex flex-col absolute text-sm font-semibold text-black top-0 right-0 bg-[--fifth-color] px-3">
             <span>56%</span>OFF
           </p>
         </div>

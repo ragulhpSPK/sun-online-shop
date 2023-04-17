@@ -37,12 +37,14 @@ function Allbestdeals() {
                 key={data.id}
               >
                 <img src={data.image} className="h-[220px] pt-10 m-auto" />
-                <p className="bg-[--fifth-color] w-14 h-10 absolute top-0 right-0  flex flex-col text-sm text-center">
+                <p className="bg-[--fifth-color] text-sm font-semibold text-black w-14 h-10 absolute top-0 right-0  flex flex-col  text-center">
                   <span>{data.offer[0]}</span>
                   {data.offer[1]}
                 </p>
-                <p className="text-center">{data.name}</p>
-                <p className="text-center">Rs:{data.price}</p>
+                <p className="text-center text-lg font-medium">{data.name}</p>
+                <p className="text-center text-lg font-medium">
+                  Rs:{data.price}
+                </p>
               </div>
             );
           })}

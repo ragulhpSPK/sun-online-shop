@@ -36,12 +36,14 @@ function Bestdeals() {
                   key={data.id}
                 >
                   <img src={data.image} className="h-[220px] pt-10 pl-10" />
-                  <p className="bg-[var(--fifth-color)] w-14 h-10 absolute top-0 right-0 skew-[20px] flex flex-col text-sm text-center">
-                    <span>{data.offer[0]}</span>
+                  <p className="bg-[var(--fifth-color)] text-md font-semibold text-black w-14 h-10 absolute top-0 right-0 skew-[20px] flex flex-col text-sm text-center">
+                    <span className="">{data.offer[0]}</span>
                     {data.offer[1]}
                   </p>
-                  <p className="text-center">{data.name}</p>
-                  <p className="text-center">Rs:{data.price}</p>
+                  <p className="text-center text-lg font-normal">{data.name}</p>
+                  <p className="text-center text-lg font-normal">
+                    Rs:{data.price}
+                  </p>
                 </div>
               );
             })}{" "}
@@ -82,11 +84,13 @@ function Bestdeals() {
                   key={data.id}
                 >
                   <img src={data.image} className="w-36 m-auto" />
-                  <p className="flex flex-col bg-[var(--fifth-color)] w-14 text-center absolute top-0 right-0">
+                  <p className="flex flex-col bg-[var(--fifth-color)] text-sm font-semibold text-black w-14 text-center absolute top-0 right-0">
                     <span>{data.offer}</span>
                     OFF
                   </p>
-                  <p className="text-xl text-center">Rs:{data.price}</p>
+                  <p className="text-lg text-center font-medium">
+                    Rs:{data.price}
+                  </p>
                 </SwiperSlide>
               );
             })}

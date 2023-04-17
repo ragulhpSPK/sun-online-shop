@@ -29,7 +29,7 @@ export default async function catagoryController(req, res) {
           { _id: req.body.id },
           req.body.data
         );
-        console.log(category);
+
         return res.status(200).send({ data: category });
       } catch (err) {
         return res.status(500).send({ message: "failed" });

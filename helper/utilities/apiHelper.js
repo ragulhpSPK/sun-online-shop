@@ -35,6 +35,20 @@ export const deleteSubCategory = (formData) => {
 };
 //SubCategory ended
 
+//products starting
 export const createProducts = (formData) => {
   return axios.post("/api/products", formData);
+};
+
+export const getAllproducts = () => {
+  return axios.get("/api/products");
+};
+
+export const updateProducts = (formData) => {
+  console.log(formData);
+  return axios.put("/api/products", formData);
+};
+
+export const deleteProducts = (formData) => {
+  return axios.delete(`/api/products/${formData}`);
 };
