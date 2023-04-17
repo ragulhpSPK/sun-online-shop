@@ -1,11 +1,25 @@
 import React from "react";
+import { TypeAnimation } from "react-type-animation";
 
 function FlashDeals() {
   return (
     <div>
       <div className="bg-[--third-color] w-[90vw] m-auto h-[35vh]">
-        <div className="text-[8vw] text-white text-center pt-10">
-          Flash Deals
+        <div className="text-[6vw] text-white text-center pt-10">
+          <TypeAnimation
+            sequence={[
+              "Flash Deals", // Types 'One'
+              1000, // Waits 1s
+
+              () => {
+                console.log("Sequence completed"); // Place optional callbacks anywhere in the array
+              },
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
+            style={{ fontSize: "1em", display: "inline-block" }}
+          />
         </div>
       </div>
       <div className="w-[90vw] m-auto mt-10 grid grid-cols-5 gap-28">

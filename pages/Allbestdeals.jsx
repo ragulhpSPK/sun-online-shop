@@ -3,8 +3,8 @@ import { BestDeals } from "@/helper/bestDeals";
 
 function Allbestdeals() {
   return (
-    <div>
-      <div className="bg-[url('/assets/bg-purple.avif')] bg-left h-[40vh] w-[85vw] m-auto bg-[cover]">
+    <div className="w-[80vw] m-auto">
+      <div className="bg-[url('/assets/purple3.jpg')] bg-left h-[40vh] w-[80vw] m-auto bg-[cover]">
         <div className=" flex justify-center items-center pt-10">
           <h1 className="text-6xl text-white w-[400px] pl-10">
             Daily Best Deals
