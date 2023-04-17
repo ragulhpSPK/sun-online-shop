@@ -1,25 +1,34 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
+
 function FlashDeals() {
   return (
     <div>
       <div className="bg-[--third-color] w-[90vw] m-auto h-[35vh]">
-        <div className="text-[6vw] text-white text-center pt-10">
-          <TypeAnimation
+        <div className="text-[8vw] text-white text-center pt-10  ">
+          <p>
+            Flash
+            <ElectricBoltIcon
+              fontSize="10px duration-3000"
+              className=" text-[yellow] "
+            />
+            Deals
+          </p>
+          {/* <TypeAnimation
             sequence={[
-              "Flash Deals", // Types 'One'
+              "Flash", // Types 'One'
               1000, // Waits 1s
-
+              "", // Deletes 'One' and types 'Two'
+              2000, // Waits 2s
+              "<ElectricBoltIcon />",
+              "Deals", // Types 'Three' without deleting 'Two'
               () => {
                 console.log("Sequence completed"); // Place optional callbacks anywhere in the array
               },
             ]}
-            wrapper="span"
-            cursor={true}
-            repeat={Infinity}
-            style={{ fontSize: "1em", display: "inline-block" }}
-          />
+          /> */}
         </div>
       </div>
       <div className="w-[90vw] m-auto mt-10 grid grid-cols-5 gap-28">

@@ -10,46 +10,76 @@ function Footer() {
       <div className="grid grid-cols-4 w-[80vw]  m-auto border-b border-gray-400 pb-5">
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Customer Service</h1>
-          <p>Help Center</p>
-          <p>Payment Methods</p>
-          <p>Free Shipping</p>
-          <p>Return & Refund</p>
-          <p>Sun Guarantee</p>
-          <p>OverSeas Products</p>
-          <p>Contact Us</p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Help Center
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Payment Methods
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Free Shipping
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Return & Refund
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Sun Guarantee
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            OverSeas Products
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Contact Us
+          </p>
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">About Sun</h1>
-          <p>About Us</p>
-          <p>Sun Blog</p>
-          <p>Sun Careeres</p>
-          <p>Sun policy</p>
-          <p>Sun Mall</p>
-          <p>Seller Center</p>
-          <p>Flash Deals</p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            About Us
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Sun Blog
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Sun Careeres
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Sun policy
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Sun Mall
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Seller Center
+          </p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Flash Deals
+          </p>
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Follow Us </h1>
-          <p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
             <FacebookIcon />
             Facebook
           </p>
-          <p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
             <InstagramIcon />
             Instagram
           </p>
-          <p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
             <TwitterIcon />
             Twitter
           </p>
-          <p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
             <LinkedInIcon />
             Linkedin
           </p>
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Sun App Download</h1>
-          <p>Google play</p>
+          <p className="hover:text-[--third-color] hover:font-semibold">
+            Google play
+          </p>
         </div>
       </div>
       <div>

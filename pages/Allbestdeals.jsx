@@ -1,10 +1,11 @@
 import React from "react";
 import { BestDeals } from "@/helper/bestDeals";
+import { TypeAnimation } from "react-type-animation";
 
 function Allbestdeals() {
   return (
     <div className="w-[80vw] m-auto">
-      <div className="bg-[url('/assets/purple3.jpg')] bg-left h-[40vh] w-[80vw] m-auto bg-[cover]">
+      <div className="bg-[url('/assets/purple3.jpg')] bg-left h-[40vh] w-[80vw] m-auto bg-[cover] shadow-xl shadow-black/30">
         <div className=" flex justify-center items-center pt-10">
           <h1 className="text-6xl text-white w-[400px] pl-10">
             Daily Best Deals
@@ -12,9 +13,18 @@ function Allbestdeals() {
           <img src="/assets/bestdeals.png" className="w-[500px] h-[250px] " />
           <p className="text-5xl text-white w-[300px]">Upto 50% Offers</p>
         </div>
-        <p className="text-2xl text-white w-[80vw] text-center m-auto">
-          Unbeatable daily deals on top-rated products,with discounts upto 50%
-          offer
+        <p className="text-[32px] text-white w-[80vw] text-center m-auto">
+          <TypeAnimation
+            sequence={[
+              ` Unbeatable daily deals on top-rated products,with discounts upto 30%
+          offer...`,
+              1000,
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={Infinity}
+            style={{ fontSize: "1em", display: "inline-block" }}
+          />
         </p>
       </div>
 
