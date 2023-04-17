@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import React from "react";
 import styles from "../../styles/zoom.module.css";
 import { useDispatch } from "react-redux";
@@ -8,25 +8,29 @@ import { AddCart } from "@/helper/Addcart";
 
 export default function App() {
   const [addcart, setAddCart] = useState();
+  const [current, setCurrentImage] = useState();
   const router = useRouter();
-  const images = [
-    "/assets/redmi1.jpg",
-    "/assets/redmi2.jpg",
-    "/assets/redmi3.jpg",
-    "/assets/redmi4.jpg",
-    "/assets/redmi5.jpg",
-  ];
+  // const images = [
+  //   "/assets/redmi1.jpg",
+  //   "/assets/redmi2.jpg",
+  //   "/assets/redmi3.jpg",
+  //   "/assets/redmi4.jpg",
+  //   "/assets/redmi5.jpg",
+  // ];
 
-  const [img, setImg] = useState(images[0]);
+  const [img, setImg] = useState([]);
 
   const hoverhandler = (image, i) => {
+    console.log("sdjsd", image, i);
     setImg(image);
-    refs.current[i].classList.add("active");
-    for (var j = 0; j < images.length; j++) {
-      if (i !== j) {
-        refs.current[j].classList.remove("active");
-      }
-    }
+
+    // refs.current[i].classList.add("active");
+    // for (var j = 0; j < 5; j++) {
+    //   console.log("jjjj", j);
+    //   if (i !== j) {
+    //     refs.current[j].classList.remove("active");
+    //   }
+    // }
   };
 
   const refs = useRef([]);
@@ -40,6 +44,10 @@ export default function App() {
 
   const result = AddCart.filter((data) => {
     return data.product_id == router.query.id;
+  });
+
+  useEffect(() => {
+    result.map((img) => setImg(img.image[0]));
   });
 
   return (
@@ -63,21 +71,24 @@ export default function App() {
 							className={
 								styles.img
 							}/> */}
-            <img src={img} alt="product" className="h-[60vh]" />
+
+            <img src={current || img} alt="product" className="h-[60vh]" />
           </div>
           <div className={styles.left_1}>
-            {images.map((image, i) => {
-              return (
-                <div
-                  className={i === 0 ? "border-4" : "border-none"}
-                  id={styles.img_wrap}
-                  key={i}
-                  onClick={() => hoverhandler(image, i)}
-                  ref={addref}
-                >
-                  <img src={image} alt="not found" />
-                </div>
-              );
+            {result.map((img) => {
+              return img.image.map((image, i) => {
+                return (
+                  <div
+                    className={i === 0 ? "border-4" : "border-none"}
+                    id={styles.img_wrap}
+                    key={i}
+                    onMouseEnter={() => setCurrentImage(image)}
+                    ref={addref}
+                  >
+                    <img src={image} alt="Mobile" className="w-40" />
+                  </div>
+                );
+              });
             })}
           </div>
         </div>

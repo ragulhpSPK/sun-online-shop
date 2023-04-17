@@ -5,7 +5,7 @@ function Topproducts() {
   return (
     <div className="w-[80vw] m-auto pt-10">
       <div className="text-xl">
-        <h1 className="bg-[var(--first-color)] py-3 px-2 text-white">
+        <h1 className="bg-[var(--third-color)] py-3 px-2 text-white">
           Top Products
         </h1>
       </div>
@@ -23,8 +23,8 @@ function Topproducts() {
               <div className="h-[5vh] ">
                 <h1 className="text-center">{data.name}</h1>
                 <p className="text-center">Rs:{data.price}</p>
-                <div className="bg-[var(--fifth-color)] w-10 h-8 absolute right-0 bottom-0">
-                  <img src="/assets/cart2.png" className="w-5 m-auto pt-1" />
+                <div className="bg-[var(--fifth-color)] w-[45px] h-[35px] absolute right-0 bottom-0">
+                  <img src="/assets/cart2.png" className="w-6 m-auto pt-1" />
                 </div>
               </div>
             </div>

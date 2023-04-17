@@ -4,7 +4,7 @@ import { BestDeals } from "@/helper/bestDeals";
 function Allbestdeals() {
   return (
     <div>
-      <div className="bg-[url('/assets/bg-7.jpg')] h-[40vh] w-[85vw] m-auto bg-[cover]">
+      <div className="bg-[url('/assets/bg-purple.avif')] bg-left h-[40vh] w-[85vw] m-auto bg-[cover]">
         <div className=" flex justify-center items-center pt-10">
           <h1 className="text-6xl text-white w-[400px] pl-10">
             Daily Best Deals
@@ -26,8 +26,8 @@ function Allbestdeals() {
                 className="relative   w-[13vw] h-[30vh] border bg-[#fff] border-gray-200 m-auto shadow-lg"
                 key={data.id}
               >
-                <img src={data.image} className="h-[220px] pt-10 pl-10" />
-                <p className="bg-[gold] w-14 h-10 absolute top-0 right-0  flex flex-col text-sm text-center">
+                <img src={data.image} className="h-[220px] pt-10 m-auto" />
+                <p className="bg-[--fifth-color] w-14 h-10 absolute top-0 right-0  flex flex-col text-sm text-center">
                   <span>{data.offer[0]}</span>
                   {data.offer[1]}
                 </p>
@@ -35,7 +35,7 @@ function Allbestdeals() {
                 <p className="text-center">Rs:{data.price}</p>
               </div>
             );
-          })}{" "}
+          })}
         </div>
       </div>
     </div>

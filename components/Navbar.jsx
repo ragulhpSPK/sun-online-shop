@@ -7,38 +7,38 @@ function Navbar() {
   return (
     <div className="h-24 bg-[white] shadow-md shadow-slate-100">
       <div className=" bg-[#943074] text-white flex justify-around ">
-        <div className="flex pt-2">
+        <div className="flex p-1">
           <p className="text-md font-bold text-white">follow us On</p>
           <FacebookIcon className="mr-1" />
           <InstagramIcon className="mr-1" />
         </div>
-        <div className="flex pt-2 font-bold text-[var(--first-color)]">
+        <div className="flex p-1 font-bold text-[var(--first-color)]">
           <p className="pr-1 text-md text-white">Sign Up</p>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" color="white" />
           <p className="pl-1 text-md text-white">Login</p>
         </div>
       </div>
       <div className="w-screen flex justify-around items-center h-[60%]">
-        <div className="pl-16">
+        <div className="pl-24">
           <img src="/assets/sunn.png" className="xl:w-20 xsm:w-14" alt="Logo" />
         </div>
-        <div className="pt-2 relative lg:w-[30vw] xsm:w-[50vw] text-gray-600">
+        <div className="pt-2 relative lg:w-[36vw] xsm:w-[50vw] text-gray-600">
           <input
-            className="border-2 border-gray-300 bg-white xsm:h-8 xsm:w-[100%] lg:h-12 px-5 pr-16 lg:w-[100%] rounded-lg text-sm focus:outline-none"
+            className="border-2 border-gray-300 bg-white xsm:h-8 xsm:w-[100%] lg:h-12 px-5 pr-16 lg:w-[100%] rounded-md text-sm focus:outline-none"
             type="search"
             name="search"
             placeholder="Search"
           />
           <button
             type="submit"
-            className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-0 lg:mt-5 lg:mr-4"
+            className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-3  lg:mr-2 bg-[#943074]  px-4 py-1 rounded-md text-[#fff] "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-8 h-8 text-white  "
             >
               <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
@@ -54,7 +54,7 @@ function Navbar() {
             2
           </p>
         </div>
-        <div className="xsm:hidden lg:block pr-[70px]">
+        <div className="xsm:hidden lg:block pr-[110px]">
           <p className="lg:text-md text-[var(--first-color)] text-xl lg:font-bold ">
             For Contact:
           </p>

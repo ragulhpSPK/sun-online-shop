@@ -13,7 +13,7 @@ function Bestdeals() {
     <div className="pt-5">
       <div className="  h-[50vh] w-[80vw] m-auto flex">
         <div className="flex flex-col  h-[49vh] w-[79.5vw] m-auto rounded-md">
-          <div className="flex justify-between px-1 bg-[var(--first-color)]  h-[20vh]">
+          <div className="flex justify-between px-1 bg-[var(--third-color)]  h-[20vh]">
             <div className="flex flex-col justify-around">
               <img src="/assets/deals.png" className="w-28 h-14" />
               <p className="text-white text-2xl">Best Deals today</p>

@@ -63,9 +63,9 @@ button,
 :root {
   --first-color: #953ba0;
   --second-color: #943074;
-  --third-color: #d298ca;
+  --third-color: #943074;
   --four-color: #cb7bcc;
-  --fifth-color: #f3469d;
+  --fifth-color: #f092be;
 }
 
 /* antd Modal Override */

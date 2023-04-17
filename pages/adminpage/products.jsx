@@ -34,6 +34,7 @@ function Products() {
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [value, setValue] = useState([]);
   const { Option } = Select;
 
   const QuillNoSSRWrapper = dynamic(import("react-quill"), {
@@ -84,13 +85,6 @@ function Products() {
     console.log(values);
   };
 
-  const changehandler = (value) => {
-    form.setFieldsValue({
-      value,
-    });
-    console.log(value);
-  };
-
   const handleCancel = () => {
     setAdd(false);
     setEdit(false);
@@ -119,6 +113,8 @@ function Products() {
       notification.success({ message: "Something went wrong" });
     }
   };
+
+  console.log("sd.ksk", value);
 
   // const dataSource = [
   //   {
@@ -255,7 +251,7 @@ function Products() {
               modules={modules}
               formats={formats}
               theme="snow"
-              onChange={changehandler}
+              onChange={(e) => setValue(e.target.value)}
               note="description"
             />
 
