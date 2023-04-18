@@ -29,7 +29,7 @@ import {
   updateProducts,
   deleteProducts,
 } from "../../helper/utilities/apiHelper";
-import { get, update } from "lodash";
+import { get } from "lodash";
 
 function Products() {
   const [edit, setEdit] = useState(false);
@@ -41,6 +41,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   const { Option } = Select;
   const [updateId, setUpdateId] = useState([]);
+  const [value, setValue] = useState("");
 
   const QuillNoSSRWrapper = dynamic(import("react-quill"), {
     ssr: false,
@@ -87,7 +88,7 @@ function Products() {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log(values);
+    console.log("kjg", values);
   };
 
   const editProducts = (value) => {
@@ -100,13 +101,13 @@ function Products() {
     form.setFieldsValue({
       value,
     });
-    console.log(value);
   };
 
   const handleCancel = () => {
     setAdd(false);
     setEdit(false);
-    console.log("clcked");
+    setOpen(!open);
+    setUpdateId("");
   };
 
   const fetchData = async () => {
@@ -130,10 +131,12 @@ function Products() {
   }, []);
 
   const handleFinish = async (value) => {
-    if (updateId === "") {
+    if (updateId == "") {
       try {
         await createProducts(value);
         notification.success({ message: "products added successfully" });
+        fetchData();
+        form.resetFields();
       } catch (err) {
         notification.success({ message: "Something went wrong" });
       }
@@ -145,9 +148,10 @@ function Products() {
         };
         await updateProducts(formData);
         notification.success({ message: "products updated successfully" });
-        form.resetFields;
+        setOpen(false);
         setUpdateId("");
         fetchData();
+        form.resetFields();
       } catch (err) {
         notification.error({ message: "Something went wrong" });
       }
@@ -155,14 +159,16 @@ function Products() {
   };
 
   const deleteHandler = async (value) => {
-    console.log("clicked");
     try {
       await deleteProducts(value._id);
       notification.success({ message: "products deleted successfully" });
+      fetchData();
     } catch (err) {
       notification.error({ message: "Something went wrong" });
     }
   };
+
+  console.log("djd", value);
 
   // const dataSource = [
   //   {
@@ -234,7 +240,7 @@ function Products() {
         <div className="p-10">
           <div className="overflow-x-auto">
             <Table
-              className="w-[90vw]"
+              className="w-[80vw]"
               columns={columns}
               dataSource={products}
             />
@@ -244,7 +250,6 @@ function Products() {
           width={600}
           open={open}
           destroyOnClose
-          onCancel={handleCancel}
           okButtonProps={{
             style: {
               display: "none",
@@ -295,7 +300,11 @@ function Products() {
             >
               <Select placeholder="Select Category">
                 {category.map((res) => {
-                  return <Option value={res.name}>{res.name}</Option>;
+                  return (
+                    <Option value={res.name} key={res.id}>
+                      {res.name}
+                    </Option>
+                  );
                 })}
               </Select>
             </Form.Item>
@@ -311,7 +320,7 @@ function Products() {
               <Select placeholder="Select SubCategory">
                 {subCategory.map((res) => {
                   return (
-                    <Option value={res.subcategoryname}>
+                    <Option value={res.subcategoryname} key={res.id}>
                       {res.subcategoryname}
                     </Option>
                   );
@@ -323,7 +332,8 @@ function Products() {
               modules={modules}
               formats={formats}
               theme="snow"
-              onChange={changehandler}
+              value={value}
+              onChange={setValue}
               note="description"
             />
 
@@ -334,7 +344,7 @@ function Products() {
               <Button
                 type="Primary"
                 className="bg-white shadow-xl hover:bg-blue-500 !text-black"
-                onClick={() => setOpen(!open)}
+                onClick={handleCancel}
               >
                 Cancel
               </Button>
@@ -343,7 +353,7 @@ function Products() {
                 className="bg-white shadow-xl hover:bg-blue-500 !text-black"
                 htmlType="submit"
               >
-                {updateId === "" ? "Save" : "Update"}
+                {updateId == "" ? "Save" : "Update"}
               </Button>
             </div>
           </Form>

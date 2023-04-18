@@ -1,6 +1,6 @@
 import { Input, Modal, Table, Form, Button, Select, notification } from "antd";
 import React, { useEffect, useState } from "react";
-import AddOutlinedIcon from "@mui/icons-material/Add";
+import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 import {
   createSubCatagory,
   getAllCatagory,
@@ -120,18 +120,18 @@ const Subcategories = () => {
 
   return (
     <div className="flex flex-col w-[80vw]">
-      <div className="flex flex-col gap-y-5 pl-0">
+      <div className="flex flex-col gap-y-2 pl-0">
         <div
-          className="p-2 !bg-white !shadow-inner cursor-pointer self-end  pt-[2vh]"
+          className="p-2 !bg-white  cursor-pointer self-end  pt-[1px]"
           onClick={() => {
             setOpen(true);
             setUpdate("");
           }}
         >
-          <AddOutlinedIcon className="!text-green-600 " />
+          <AddCardOutlinedIcon className="!text-green-600  mr-3" />
         </div>
         <div>
-          <Table dataSource={subCat} columns={columns} className="w-[100vw]" />
+          <Table dataSource={subCat} columns={columns} className="w-[80vw]" />
         </div>
         <Modal footer={false} open={open} destroyOnClose>
           <Form form={form} onFinish={handleFinish}>

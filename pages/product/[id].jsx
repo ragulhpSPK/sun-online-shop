@@ -10,37 +10,8 @@ export default function App() {
   const [addcart, setAddCart] = useState();
   const [current, setCurrentImage] = useState();
   const router = useRouter();
-  // const images = [
-  //   "/assets/redmi1.jpg",
-  //   "/assets/redmi2.jpg",
-  //   "/assets/redmi3.jpg",
-  //   "/assets/redmi4.jpg",
-  //   "/assets/redmi5.jpg",
-  // ];
 
   const [img, setImg] = useState([]);
-
-  const hoverhandler = (image, i) => {
-    console.log("sdjsd", image, i);
-    setImg(image);
-
-    // refs.current[i].classList.add("active");
-    // for (var j = 0; j < 5; j++) {
-    //   console.log("jjjj", j);
-    //   if (i !== j) {
-    //     refs.current[j].classList.remove("active");
-    //   }
-    // }
-  };
-
-  const refs = useRef([]);
-  refs.current = [];
-
-  const addref = (el) => {
-    if (el && !refs.current.includes(el)) {
-      refs.current.push(el);
-    }
-  };
 
   const result = AddCart.filter((data) => {
     return data.product_id == router.query.id;
@@ -51,27 +22,10 @@ export default function App() {
   });
 
   return (
-    <div className="h-[100vh] flex justify-evenly">
-      <div className={styles.container}>
+    <div className="h-[100vh] flex justify-center ">
+      <div className={`${styles.container} w-[30vw] m-auto`}>
         <div className={styles.left}>
           <div className={`${styles.left_2} pl-24`}>
-            {/* <ReactImageMagnify {...{
-								    smallImage:{
-								        alt:'not',
-								        isFluidWidth:true,
-								        src:img,
-								    },
-								    largeImage:{
-								        src:img,
-								        width:1200,
-								        height:1800,
-                        
-								    }    
-								}}
-							className={
-								styles.img
-							}/> */}
-
             <img src={current || img} alt="product" className="h-[60vh]" />
           </div>
           <div className={styles.left_1}>
@@ -79,11 +33,12 @@ export default function App() {
               return img.image.map((image, i) => {
                 return (
                   <div
-                    className={i === 0 ? "border-4" : "border-none"}
+                    className={
+                      i == 0 ? "border border-[--third-color]" : "border-none"
+                    }
                     id={styles.img_wrap}
                     key={i}
                     onMouseEnter={() => setCurrentImage(image)}
-                    ref={addref}
                   >
                     <img src={image} alt="Mobile" className="w-40" />
                   </div>

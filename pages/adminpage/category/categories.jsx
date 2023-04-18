@@ -11,7 +11,7 @@ import {
 import { PlusOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import Sidenavbar from "../Sidenavbar";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import {
@@ -173,14 +173,14 @@ const Categories = () => {
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex flex-col gap-y-10 h-[80vh]">
+        <div className="flex flex-col gap-y-2 h-[80vh]">
           <div
-            className="p-2 !bg-white !shadow-inner cursor-pointer self-end pt-[2vh]"
+            className="p-2 !bg-white  cursor-pointer self-end pt-[1px] mr-3"
             onClick={() => {
               setOpen(true);
             }}
           >
-            <AddOutlinedIcon className="!text-green-600" />
+            <AddCardOutlinedIcon className="!text-green-600" />
           </div>
           <div className="p-2">
             <Table className="w-[80vw]" dataSource={data} columns={columns} />

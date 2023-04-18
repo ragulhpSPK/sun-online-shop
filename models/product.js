@@ -10,10 +10,10 @@ const productSchema = new mongoose.Schema(
     },
 
     categoryname: {
-      title: String,
+      type: String,
     },
     subcategoryname: {
-      title: String,
+      type: String,
     },
   },
   { timestamps: true }
