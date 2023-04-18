@@ -65,8 +65,7 @@ export const Category = [
 
   {
     id: 11,
-    image: "/assets/Joystick.png",
-
+    image: "/assets/joystick.png",
     category: "Joysticks",
     items: "7 items",
   },
