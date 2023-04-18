@@ -20,21 +20,6 @@ const Subcategories = () => {
   const [subCat, setSubCat] = useState([]);
   const [update, setUpdate] = useState([]);
 
-  // const dataSource = [
-  //   {
-  //     key: "1",
-  //     name: "Mike",
-  //     age: 32,
-  //     address: "10 Downing Street",
-  //   },
-  //   {
-  //     key: "2",
-  //     name: "John",
-  //     age: 42,
-  //     address: "10 Downing Street",
-  //   },
-  // ];
-
   const fetchData = async () => {
     try {
       const result = [await getAllCatagory(), await getAllSubCatagory()];
@@ -119,7 +104,7 @@ const Subcategories = () => {
   ];
 
   return (
-    <div className="flex flex-col w-[80vw]">
+    <div className="flex flex-col w-[80vw] ">
       <div className="flex flex-col gap-y-2 pl-0">
         <div
           className="p-2 !bg-white  cursor-pointer self-end  pt-[1px]"
@@ -128,7 +113,7 @@ const Subcategories = () => {
             setUpdate("");
           }}
         >
-          <AddCardOutlinedIcon className="!text-green-600  mr-3" />
+          <AddCardOutlinedIcon className="!text-green-600  mr-2" />
         </div>
         <div>
           <Table dataSource={subCat} columns={columns} className="w-[80vw]" />

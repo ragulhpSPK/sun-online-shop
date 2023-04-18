@@ -9,8 +9,8 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 
 function Sidenavbar() {
   return (
-    <div className="flex">
-      <div className="w-[10vw] h-[95vh] border-r border-slate-100 shadow-2xl flex flex-col ">
+    <div className="flex fixed top-[94px]">
+      <div className="w-[9.5vw] h-[95vh] border-r  border-slate-100 shadow-2xl flex flex-col ">
         <div className="h-[85vh]  m-auto">
           <Link href="/adminpage">
             <div className="flex  m-auto text-center  bg-[var(--second-color)] text-white h-[45px] w-32 rounded-md mt-2">

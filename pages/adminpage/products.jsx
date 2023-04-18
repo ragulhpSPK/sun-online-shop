@@ -233,9 +233,9 @@ function Products() {
       <div>
         <Sidenavbar />
       </div>
-      <div>
-        <div className="w-[80vw] pt-10" onClick={() => setOpen(!open)}>
-          <AddOutlinedIcon className="!text-green-600 float-right" />
+      <div className="relative !left-48 ">
+        <div className="w-[82vw] pt-10" onClick={() => setOpen(!open)}>
+          <AddOutlinedIcon className="!text-green-600 float-right mr-2" />
         </div>
         <div className="p-10">
           <div className="overflow-x-auto">

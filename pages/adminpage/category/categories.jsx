@@ -23,13 +23,26 @@ import {
 import { get } from "lodash";
 
 const { Panel } = Collapse;
-const getBase64 = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
+
+// const getBase64 = (file) =>
+//   new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(console.log(reader.result));
+//     reader.onerror = (error) => reject(error);
+//   });
+
+const changeHanlder = (e) => {
+  console.log(e);
+  var reader = new FileReader();
+  reader.readAsDataURL(e.target.files[0]);
+  reader.onload = () => {
+    console.log(reader.result);
+  };
+  reader.onerror = () => {
+    console.log(reader.result);
+  };
+};
 
 const Categories = () => {
   const [form] = Form.useForm();
@@ -172,10 +185,10 @@ const Categories = () => {
   };
   return (
     <>
-      <div className="flex flex-col">
-        <div className="flex flex-col gap-y-2 h-[80vh]">
+      <div className="flex flex-col ">
+        <div className="flex flex-col gap-y-2 w-[80vw]">
           <div
-            className="p-2 !bg-white  cursor-pointer self-end pt-[1px] mr-3"
+            className="p-2 !bg-white  cursor-pointer self-end pt-[1px] mr-2"
             onClick={() => {
               setOpen(true);
             }}
@@ -218,7 +231,7 @@ const Categories = () => {
                   fileList={fileList}
                   listType="picture-card"
                   // onPreview={handlePreview}
-                  onChange={handleChange}
+                  onChange={changeHanlder}
                   {...props}
                 >
                   {fileList.length >= 8 ? null : uploadButton}

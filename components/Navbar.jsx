@@ -5,7 +5,7 @@ import { Divider } from "@mui/material";
 
 function Navbar() {
   return (
-    <div className="h-24 bg-[white] shadow-md shadow-slate-100">
+    <div className="h-24 bg-[white] bg-fixed shadow-md shadow-slate-100 ">
       <div className=" bg-[#943074] text-white flex justify-around ">
         <div className="flex p-1">
           <p className="text-md font-bold text-white">follow us On</p>

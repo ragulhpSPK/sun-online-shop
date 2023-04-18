@@ -3,11 +3,12 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Link from "next/link";
 
 function Footer() {
   return (
     <div className="h-[40vh] w-[100vw] mt-40">
-      <div className="grid grid-cols-4 w-[80vw]  m-auto border-b border-gray-400 pb-5">
+      <div className="grid grid-cols-4 gap-x-48 w-[80vw]  m-auto border-b border-gray-400 pb-5">
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Customer Service</h1>
           <p className="hover:text-[--third-color] hover:font-semibold">
@@ -34,9 +35,12 @@ function Footer() {
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">About Sun</h1>
-          <p className="hover:text-[--third-color] hover:font-semibold">
-            About Us
-          </p>
+          <Link href="/footers/About">
+            <p className="hover:text-[--third-color] hover:font-semibold">
+              About Us
+            </p>
+          </Link>
+
           <p className="hover:text-[--third-color] hover:font-semibold">
             Sun Blog
           </p>

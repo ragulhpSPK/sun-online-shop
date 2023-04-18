@@ -85,7 +85,7 @@ export default function App() {
     //     </SwiperSlide>
     //   </Swiper>
     // </div>
-    <div className="w-[80vw] m-auto flex">
+    <div className="w-[80vw] m-auto flex ">
       <Swiper
         modules={[Navigation, Autoplay, Pagination]}
         className="myswiper w-[70%] m-auto"

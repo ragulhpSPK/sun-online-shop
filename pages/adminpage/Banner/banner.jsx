@@ -70,7 +70,7 @@ function Banner() {
       <div>
         <Sidenavbar />
       </div>
-      <div className="w-[80vw] pl-5">
+      <div className="w-[80vw] pl-5 relative left-48 ">
         <div onClick={() => setOpen(!open)}>
           <AddCardOutlinedIcon className="float-right text-green-600 mr-3 cursor-pointer" />
         </div>
