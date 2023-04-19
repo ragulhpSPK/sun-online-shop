@@ -73,3 +73,14 @@ button,
 .ant-modal-close-icon {
   display: none !important;
 }
+
+
+/* antd table */
+
+.ant-table-thead{
+font-size: 18px;
+}
+
+.ant-table-tbody{
+  font-size: 16px;
+}

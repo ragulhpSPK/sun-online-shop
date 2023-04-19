@@ -213,7 +213,7 @@ function Products() {
         return (
           <div className="flex gap-x-5">
             <EditNoteOutlinedIcon
-              className="text-green-500 !cursor-pointer"
+              className="text-green-500 !cursor-pointer "
               onClick={() => {
                 editProducts(value);
               }}
@@ -238,7 +238,7 @@ function Products() {
           <AddOutlinedIcon className="!text-green-600 float-right mr-2" />
         </div>
         <div className="p-10">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto ">
             <Table
               className="w-[80vw]"
               columns={columns}

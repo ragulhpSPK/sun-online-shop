@@ -10,6 +10,7 @@ export default function App() {
   const [addcart, setAddCart] = useState();
   const [current, setCurrentImage] = useState();
   const router = useRouter();
+  // const [cart,setCart]=useState([]);
 
   const [img, setImg] = useState([]);
 
@@ -59,7 +60,12 @@ export default function App() {
             })}
 
             <div className="pt-10 flex justify-between w-[15vw]">
-              <button className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md px-3 h-12 py-2">
+              <button
+                className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md px-3 h-12 py-2"
+                onClick={() => {
+                  router.push({ pathname: "/cart", query: data });
+                }}
+              >
                 Add to Cart
               </button>
               <button className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md h-12 px-3 py-2">
