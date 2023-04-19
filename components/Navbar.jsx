@@ -7,8 +7,10 @@ import { useSelector } from "react-redux";
 import { Category } from "@/helper/categories";
 import { SubCategory } from "../helper/Subcategory";
 import { useRouter } from "next/router";
+import { Input } from "antd";
 
 function Navbar() {
+  const { Search } = Input;
   const Quantity = useSelector((state) => state.cart.quantity);
   const [search, setSearch] = useState([]);
   const [filter, setFilter] = useState([]);
@@ -34,8 +36,8 @@ function Navbar() {
     });
   }, [search]);
 
-  console.log(filter);
-  console.log(route.id);
+  // console.log(search);
+  // // console.log(route.id);
 
   return (
     <div className="h-24 bg-[white] bg-fixed shadow-md shadow-slate-100 ">
@@ -56,21 +58,22 @@ function Navbar() {
           <img src="/assets/sunn.png" className="xl:w-20 xsm:w-14" alt="Logo" />
         </div>
         <div className="pt-2 relative lg:w-[36vw] xsm:w-[50vw] text-gray-600">
-          <input
-            className="border-2 border-gray-300 bg-white xsm:h-8 xsm:w-[100%] lg:h-12 px-5 pr-16 lg:w-[100%] rounded-md text-sm focus:outline-none"
-            type="search"
-            name="search"
-            placeholder="Search"
+          <Search
+            placeholder="input search text"
+            enterButton="Search"
+            size="large"
+            className="w-[35vw]"
             onChange={(e) => setSearch(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-3  lg:mr-2 bg-[#943074]  px-4 py-1 rounded-md text-[#fff] "
-            onClick={() => {
+            onPressEnter={() => {
               router.push({ pathname: `/subcat`, query: route });
             }}
-          >
-            <svg
+          />
+          {/* <button
+            type="submit"
+            className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-3  lg:mr-2 bg-[#943074]  px-4 py-1 rounded-md text-[#fff] "
+          
+          > */}
+          {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -78,8 +81,8 @@ function Navbar() {
               className="w-8 h-8 text-white  "
             >
               <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-          </button>
+            </svg> */}
+          {/* </button> */}
         </div>
         <Link href="/cart">
           <div className="xsm:min-w-[20px] lg:w-[37px] relative">

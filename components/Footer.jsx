@@ -88,7 +88,10 @@ function Footer() {
       </div>
       <div>
         <div className="w-[80vw] m-auto pt-10">
-          <h1> &#169; Sun Shopee.All Rights reserved 2023</h1>
+          <h1 className="text-center">
+            <span className="text-2xl">&#169;</span> Sun Shopee.All Rights
+            reserved 2023
+          </h1>
         </div>
       </div>
     </div>

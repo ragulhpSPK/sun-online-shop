@@ -21,14 +21,6 @@ function Subcat() {
     };
   };
 
-  useEffect(() => {
-    setCategories(router.query.id);
-    const result = Cat.filter((data) => {
-      return data.cat_id == categories;
-    });
-    setProduct(result);
-  }, [router.query.id]);
-
   const clickHandler = (e) => {
     setProduct(
       Cat.filter((data) => {
@@ -36,6 +28,15 @@ function Subcat() {
       })
     );
   };
+
+  useEffect(() => {
+    setCategories(router.query.id);
+    let result = Cat.filter((data) => {
+      return data.cat_id == categories;
+    });
+    console.log(result);
+    setProduct(result);
+  }, [router.query.id]);
 
   return (
     <div className="w-[100vw] flex">

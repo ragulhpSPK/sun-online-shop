@@ -4,7 +4,6 @@ import { CloseOutlined } from "@ant-design/icons";
 import styles from "../styles/form.module.css";
 import { useRouter } from "next/router";
 import { InputNumber } from "antd";
-
 import { useDispatch, useSelector } from "react-redux";
 
 function Cart() {
@@ -12,11 +11,11 @@ function Cart() {
   const [Qty, setQty] = useState(1);
   const [price, setPrice] = useState([]);
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
   const onChange = (value) => {
-    console.log(value);
+    setQty(value);
   };
 
   return (
@@ -50,22 +49,6 @@ function Cart() {
                         <td className="border-r">{data.producttitle}</td>
                         <td className="border-r">
                           <div className="flex justify-center items-center">
-                            {/* <div>
-                               <button
-                              className="text-black text-3xl w-10 bg-[#fcf9f998] shadow-xl border"
-                              onClick={minus}
-                            >
-                              -
-                            </button>
-                            <span className="px-2">Qty:{Qty}</span>
-                            <button
-                              className="text-black text-3xl w-10 bg-[#fcf9f998] shadow-xl border"
-                              onClick={plus}
-                            >
-                              +
-                            </button>  
-                            </div>*/}
-
                             <InputNumber
                               min={1}
                               max={5}
@@ -93,7 +76,7 @@ function Cart() {
           <div className=" bg-black/90 h-[100%] text-xl pl-5 flex flex-col justify-evenly">
             <p>Total Price:{Qty}</p>
             <p>Total Discount:0</p>
-            <p>Total Quantity:{cart.products.length}</p>
+            <p>Total Quantity:{cart.products.length + Qty - 1}</p>
 
             <button
               className="bg-[var(--third-color)] w-[10vw] h-[5vh] rounded-sm text-black font-medium"

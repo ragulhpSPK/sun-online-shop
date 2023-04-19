@@ -84,3 +84,42 @@ font-size: 18px;
 .ant-table-tbody{
   font-size: 16px;
 }
+
+
+/* antd search box */
+
+.ant-input-group-wrapper{
+  background-color: var(--third-color) !important;
+  border-radius: 8px;
+  color: #fff !important;
+  
+}
+
+
+
+.ant-input{
+  height: 5vh;
+}
+
+.ant-btn{
+  width: 130px !important;
+  color: white !important;
+  font-size: 20px !important;
+}
+
+.ant-input-group-addon{
+  background-color: none;
+}
+
+.ant-btn-primary{
+  background-color: none !important;
+}
+
+.ant-btn-primary {
+  background-color: var(--third-color)!important;
+  
+}
+
+.ant-btn-primary:hover{
+  background-color: var(--third-color) !important;
+}

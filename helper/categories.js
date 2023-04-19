@@ -52,7 +52,6 @@ export const Category = [
   {
     id: 11,
     image: "/assets/mobilecases.png",
-    cat_id: 9,
     category: "Mobile Cases",
     items: "50 items",
   },
@@ -67,56 +66,48 @@ export const Category = [
   {
     id: 13,
     image: "/assets/makeup.png",
-
     category: "Oils",
     items: "2 items",
   },
   {
     id: 14,
     image: "/assets/aircooler.png",
-
     category: "Air Coolers",
     items: "2 items",
   },
   {
     id: 15,
     image: "/assets/laptop.jfif",
-
     category: "Laptops",
     items: "2 items",
   },
   {
     id: 16,
     image: "/assets/camera.jfif",
-
     category: "Cameras",
     items: "2 items",
   },
   {
     id: 17,
     image: "/assets/mixe.png",
-
     category: "Mixe Grinders",
     items: "2 items",
   },
   {
     id: 18,
     image: "/assets/fan.png",
-
     category: "Fans",
     items: "2 items",
   },
   {
     id: 19,
     image: "/assets/care.jfif",
-
     category: "Health Cares",
     items: "2 items",
   },
   {
     id: 20,
     image: "/assets/care.jfif",
-
     category: "Health Cares",
     items: "2 items",
   },
