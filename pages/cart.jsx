@@ -47,7 +47,7 @@ function Cart() {
                   <tbody>
                     <tr>
                       <td className="border-r">
-                        <img src={res.image[0]} className="w-20" />
+                        <img src={res.image} className="w-20" />
                       </td>
 
                       <td className="border-r">{res.producttitle}</td>
