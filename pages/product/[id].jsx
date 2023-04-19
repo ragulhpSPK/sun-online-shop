@@ -2,15 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import React from "react";
 import styles from "../../styles/zoom.module.css";
 import { useDispatch } from "react-redux";
-import { addProduct } from "@/redux/cartSlice";
+import { addproduct } from "@/redux/cartSlice";
 import { useRouter } from "next/router";
 import { AddCart } from "@/helper/Addcart";
+import Link from "next/link";
 
 export default function App() {
   const [addcart, setAddCart] = useState();
   const [current, setCurrentImage] = useState();
   const router = useRouter();
   // const [cart,setCart]=useState([]);
+  const dispatch = useDispatch();
 
   const [img, setImg] = useState([]);
 
@@ -21,6 +23,10 @@ export default function App() {
   useEffect(() => {
     result.map((img) => setImg(img.image[0]));
   });
+
+  const handleClick = () => {
+    dispatch(addproduct({ result }));
+  };
 
   return (
     <div className="h-[100vh] flex justify-center ">
@@ -62,12 +68,11 @@ export default function App() {
             <div className="pt-10 flex justify-between w-[15vw]">
               <button
                 className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md px-3 h-12 py-2"
-                onClick={() => {
-                  router.push({ pathname: "/cart", query: data });
-                }}
+                onClick={handleClick}
               >
                 Add to Cart
               </button>
+
               <button className="bg-[var(--second-color)] text-[#fff] text-2xl rounded-md h-12 px-3 py-2">
                 Buy Now
               </button>

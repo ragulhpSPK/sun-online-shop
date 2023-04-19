@@ -2,8 +2,12 @@ import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Divider } from "@mui/material";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const Quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <div className="h-24 bg-[white] bg-fixed shadow-md shadow-slate-100 ">
       <div className=" bg-[#943074] text-white flex justify-around ">
@@ -44,16 +48,23 @@ function Navbar() {
             </svg>
           </button>
         </div>
-        <div className="xsm:min-w-[20px] lg:w-[37px] relative">
-          <img
-            src="/assets/cart2.png"
-            className="lg:w-7 xsm:w-[30px]"
-            alt="Cart"
-          />
-          <p className="absolute  xsm:float-right   bg-[var(--second-color)] top-[-5px] right-0 xsm:h-[20px] xsm:w-[20px] xsm:text-[12px]  lg:h-5  lg:w-5 text-center lg:text-sm text-white rounded-full">
-            2
-          </p>
-        </div>
+        <Link href="/cart">
+          <div className="xsm:min-w-[20px] lg:w-[37px] relative">
+            <img
+              src="/assets/cart2.png"
+              className="lg:w-7 xsm:w-[30px]"
+              alt="Cart"
+            />
+            {Quantity === 0 ? (
+              ""
+            ) : (
+              <p className="absolute  xsm:float-right   bg-[var(--second-color)] top-[-5px] right-0 xsm:h-[20px] xsm:w-[20px] xsm:text-[12px]  lg:h-5  lg:w-5 text-center lg:text-sm text-white rounded-full">
+                {Quantity}
+              </p>
+            )}
+          </div>
+        </Link>
+
         <div className="xsm:hidden lg:block pr-[110px]">
           <p className="lg:text-md text-[var(--first-color)] text-xl lg:font-bold ">
             For Contact:
