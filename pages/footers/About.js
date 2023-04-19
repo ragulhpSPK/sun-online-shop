@@ -2,8 +2,8 @@ import React from "react";
 
 function About() {
   return (
-    <div className="h-[200vh] w-[80vw] m-auto">
-      <div className="h-[195vh] w-[80vw] bg-[#fff]  mt-5 shadow-xl">
+    <div className="min-h-[200vh] w-[80vw] m-auto">
+      <div className="min-h-[195vh] w-[80vw] bg-[#fff]  mt-5 shadow-xl">
         <h1 className="text-[28px] w-[55vw] m-auto pt-10">
           Welcome to our e-commerce website! We are excited to provide you with
           a seamless shopping experience that is easy, enjoyable, and secure.

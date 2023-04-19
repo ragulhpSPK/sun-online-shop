@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { Divider } from "@mui/material";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { Category } from "@/helper/categories";
+import { SubCategory } from "../helper/Subcategory";
+import { useRouter } from "next/router";
 
 function Navbar() {
   const Quantity = useSelector((state) => state.cart.quantity);
+  const [search, setSearch] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [route, setRoute] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(search);
+    setFilter(
+      Category.filter((data) => {
+        return data.category.toLowerCase().trim().includes(search);
+      })
+    );
+
+    // setFilter(
+    //   SubCategory.filter((data) => {
+    //     return data.subname.toLowerCase().trim().includes(search);
+    //   })
+    // );
+
+    filter.map((data) => {
+      setRoute(data);
+    });
+  }, [search]);
+
+  console.log(filter);
+  console.log(route.id);
 
   return (
     <div className="h-24 bg-[white] bg-fixed shadow-md shadow-slate-100 ">
@@ -32,10 +61,14 @@ function Navbar() {
             type="search"
             name="search"
             placeholder="Search"
+            onChange={(e) => setSearch(e.target.value)}
           />
           <button
             type="submit"
             className="absolute xsm:top-3 xsm:right-1 lg:right-0 lg:top-3  lg:mr-2 bg-[#943074]  px-4 py-1 rounded-md text-[#fff] "
+            onClick={() => {
+              router.push({ pathname: `/subcat`, query: route });
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import styles from "../styles/form.module.css";
 import { useRouter } from "next/router";
+import { InputNumber } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,14 +15,8 @@ function Cart() {
 
   const cart = useSelector((state) => state.cart);
 
-  const minus = () => {
-    if (Qty == 1) setQty(1);
-    else setQty(Qty - 1);
-  };
-
-  const plus = () => {
-    if (Qty == 5) setQty(5);
-    else setQty(Qty + 1);
+  const onChange = (value) => {
+    console.log(value);
   };
 
   return (
@@ -37,8 +32,6 @@ function Cart() {
 						}`}
                     key={data.id}
                   >
-                    {/* head */}
-
                     <thead>
                       <tr>
                         <th>Product</th>
@@ -57,7 +50,8 @@ function Cart() {
                         <td className="border-r">{data.producttitle}</td>
                         <td className="border-r">
                           <div className="flex justify-center items-center">
-                            <button
+                            {/* <div>
+                               <button
                               className="text-black text-3xl w-10 bg-[#fcf9f998] shadow-xl border"
                               onClick={minus}
                             >
@@ -69,13 +63,21 @@ function Cart() {
                               onClick={plus}
                             >
                               +
-                            </button>
+                            </button>  
+                            </div>*/}
+
+                            <InputNumber
+                              min={1}
+                              max={5}
+                              defaultValue={1}
+                              onChange={onChange}
+                              className="w-14"
+                            />
                           </div>
                         </td>
 
                         <td className="border-r">Rs:{data.price}</td>
                       </tr>
-                      {/* row 2 */}{" "}
                     </tbody>
                   </table>
                 );
@@ -103,7 +105,7 @@ function Cart() {
         </div>
 
         <div
-          className={`min-h-[50vh] w-[25vw] absolute right-10 top-10 shadow-2xl pl-10 ${
+          className={`min-h-[50vh] w-[25vw] relative right-10 top-10 shadow-2xl pl-10 ${
             check ? "block" : "hidden"
           }`}
         >
