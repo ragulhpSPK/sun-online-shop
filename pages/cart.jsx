@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 function Cart() {
   const [check, setCheck] = useState(false);
   const [Qty, setQty] = useState(1);
+  const [price, setPrice] = useState([]);
   const router = useRouter();
 
   const cart = useSelector((state) => state.cart);
@@ -30,7 +31,6 @@ function Cart() {
           <div className="overflow-x-auto w-[70vw]">
             {cart.products.map((res) => {
               return res.result.map((data) => {
-                console.log(data);
                 return (
                   <table
                     className={`table w-[60vw] border m-auto  mt-10
@@ -45,9 +45,9 @@ function Cart() {
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
-                        <th>Total</th>
                       </tr>
                     </thead>
+
                     <tbody>
                       <tr>
                         <td className="border-r">
@@ -72,8 +72,8 @@ function Cart() {
                             </button>
                           </div>
                         </td>
+
                         <td className="border-r">Rs:{data.price}</td>
-                        <td className="border-r">{Qty * data.price}</td>
                       </tr>
                       {/* row 2 */}{" "}
                     </tbody>
@@ -91,7 +91,7 @@ function Cart() {
           <div className=" bg-black/90 h-[100%] text-xl pl-5 flex flex-col justify-evenly">
             <p>Total Price:{Qty}</p>
             <p>Total Discount:0</p>
-            <p>Total Quantity:{Qty}</p>
+            <p>Total Quantity:{cart.products.length}</p>
 
             <button
               className="bg-[var(--third-color)] w-[10vw] h-[5vh] rounded-sm text-black font-medium"
