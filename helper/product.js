@@ -7,6 +7,7 @@ export const Cat = [
     cat_id: 4,
     subcat: 4,
     offer: "12%",
+    catname: "washing machine",
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const Cat = [
     cat_id: 11,
     subcat: 180,
     offer: "19%",
+    catname: "gaming",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const Cat = [
     cat_id: 2,
     subcat: 60,
     offer: "4%",
+    catname: "Tv",
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ export const Cat = [
     cat_id: 6,
     subcat: 40,
     offer: "3%",
+    catname: "watch",
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ export const Cat = [
     subcat: 50,
     image: "/assets/headphone1.png",
     offer: "8%",
+    catname: "headphone",
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ export const Cat = [
     subcat: 3,
     image: "/assets/iphone2.png",
     offer: "2%",
+    catname: "mobile",
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ export const Cat = [
     subcat: 40,
     image: "/assets/watch2.png",
     offer: "1%",
+    catname: "watch",
   },
   {
     id: 8,
@@ -70,6 +77,7 @@ export const Cat = [
     subcat: 30,
     image: "/assets/blutooth_speaker.png",
     offer: "1%",
+    catname: "speaker",
   },
 
   {
@@ -80,6 +88,7 @@ export const Cat = [
     cat_id: 4,
     subcat: 5,
     offer: "12%",
+    catname: "washing machine",
   },
   {
     id: 10,
@@ -89,6 +98,7 @@ export const Cat = [
     subcat: 2,
     image: "/assets/sam.png",
     offer: "2%",
+    catname: "mobile",
   },
   {
     id: 11,
@@ -98,6 +108,7 @@ export const Cat = [
     subcat: 1,
     image: "/assets/redmi1.jpg",
     offer: "2%",
+    catname: "mobile",
   },
   {
     id: 12,
@@ -107,5 +118,6 @@ export const Cat = [
     subcat: 70,
     image: "/assets/fridge.png",
     offer: "2%",
+    catname: "fridge",
   },
 ];

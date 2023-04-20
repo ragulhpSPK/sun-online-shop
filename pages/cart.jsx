@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import styles from "../styles/form.module.css";
@@ -14,72 +14,85 @@ function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  const onChange = (value) => {
-    setQty(value);
-  };
+  console.log(cart.products.length);
 
   return (
     <div className="flex relative">
       <div className="flex">
         <div className="pt-10">
-          <div className="overflow-x-auto w-[70vw]">
-            {cart.products.map((res) => {
-              return res.result.map((data) => {
-                return (
-                  <table
-                    className={`table w-[60vw] border m-auto  mt-10
+          {cart.products.length > 0 ? (
+            <div className="overflow-x-auto w-[70vw]">
+              {cart.products.map((res) => {
+                return res.result.map((data) => {
+                  return (
+                    <table
+                      className={`table w-[60vw] border m-auto  mt-10
 						}`}
-                    key={data.id}
-                  >
-                    <thead>
-                      <tr>
-                        <th>Product</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                      </tr>
-                    </thead>
+                      key={data.id}
+                    >
+                      <thead>
+                        <tr>
+                          <th>Product</th>
+                          <th>Name</th>
+                          <th>Quantity</th>
+                          <th>Price</th>
+                        </tr>
+                      </thead>
 
-                    <tbody>
-                      <tr>
-                        <td className="border-r">
-                          <img src={data.image[0]} className="w-20" />
-                        </td>
+                      <tbody>
+                        <tr>
+                          <td className="border-r">
+                            <img src={data.image[0]} className="w-20" />
+                          </td>
 
-                        <td className="border-r">{data.producttitle}</td>
-                        <td className="border-r">
-                          <div className="flex justify-center items-center">
-                            <InputNumber
-                              min={1}
-                              max={5}
-                              defaultValue={1}
-                              onChange={onChange}
-                              className="w-14"
-                            />
-                          </div>
-                        </td>
+                          <td className="border-r">{data.producttitle}</td>
+                          <td className="border-r">
+                            <div className="flex justify-center items-center">
+                              <InputNumber
+                                min={1}
+                                max={5}
+                                defaultValue={1}
+                                onChange={(e) => setQty(e)}
+                                className="w-14"
+                              />
+                            </div>
+                          </td>
+                          {useEffect(() => {
+                            setPrice(data.price);
+                          })}
 
-                        <td className="border-r">Rs:{data.price}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                );
-              });
-            })}
-          </div>
+                          <td className="border-r">Rs:{Qty * data.price}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  );
+                });
+              })}
+            </div>
+          ) : (
+            <div className="w-[70vw] flex  flex-col-reverse pt-10 relative ">
+              <img
+                src="/assets/empty2.jpg"
+                className="text-center m-auto w-[25vw]"
+              ></img>
+              <p className="m-auto text-3xl text-slate-500 absolute top-[18vh] left-[28vw]">
+                No products to show
+              </p>
+            </div>
+          )}
         </div>
         <div
           className={`mt-14 w-[20vw] h-[40vh] text-white ${
             check ? "hidden" : "block"
-          }`}
+          } `}
         >
-          <div className=" bg-black/90 h-[100%] text-xl pl-5 flex flex-col justify-evenly">
-            <p>Total Price:{Qty}</p>
+          <div className=" bg-black/90 h-[100%] text-xl pl-5 mt-20 flex flex-col justify-evenly rounded-md">
+            <p>Total Price:{cart.total}</p>
             <p>Total Discount:0</p>
-            <p>Total Quantity:{cart.products.length + Qty - 1}</p>
+            <p>Total Quantity:{cart.quantity}</p>
 
             <button
-              className="bg-[var(--third-color)] w-[10vw] h-[5vh] rounded-sm text-black font-medium"
+              className="bg-[var(--third-color)] w-[8vw] h-[5vh] text-[18px] hover:bg-[--fifth-color] duration-1000 scale-110 text-white rounded-sm hover:text-black font-medium"
               onClick={() => setCheck(true)}
             >
               Cash On Delivery
