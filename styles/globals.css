@@ -1,11 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&family=Montserrat:wght@700&family=Poppins:wght@400;600&family=Rancho&family=Tilt+Warp&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Rancho";
   user-select: none;
 }
 
@@ -74,52 +74,65 @@ button,
   display: none !important;
 }
 
-
 /* antd table */
-
-.ant-table-thead{
-font-size: 18px;
-}
-
-.ant-table-tbody{
-  font-size: 16px;
-}
-
 
 /* antd search box */
 
-.ant-input-group-wrapper{
+.ant-input-group-wrapper {
   background-color: var(--third-color) !important;
   border-radius: 8px;
   color: #fff !important;
-  
 }
 
-
-
-.ant-input{
+.ant-input {
   height: 5vh;
 }
 
-.ant-btn{
-  width: 130px !important;
+.ant-btn {
+  padding: 5px 10px;
+  border-radius: 5px !important;
   color: white !important;
-  font-size: 20px !important;
 }
 
-.ant-input-group-addon{
+.ant-input-group-addon {
   background-color: none;
 }
 
-.ant-btn-primary{
+.ant-btn-primary {
   background-color: none !important;
 }
 
 .ant-btn-primary {
-  background-color: var(--third-color)!important;
-  
+  background-color: var(--third-color) !important;
 }
 
-.ant-btn-primary:hover{
+.ant-btn-primary:hover {
   background-color: var(--third-color) !important;
+}
+
+/* ant design menu override */
+
+.ant-menu {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: start !important;
+  gap: 20px !important;
+  border: none !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #943074 !important;
+  color: white !important;
+  border-radius: 1px !important;
+}
+
+/* antd tab override */
+.ant-tabs-tab-btn {
+  color: #943074 !important;
+}
+
+/* antd collapse */
+.ant-collapse,
+.ant-table-thead {
+  background-color: white !important;
 }

@@ -15,6 +15,7 @@ export default async function catagoryController(req, res) {
       break;
     case "POST":
       try {
+        console.log(req.body);
         const category = new Catagory({ ...req.body });
         const result = await category.save();
         return res.status(200).send({ data: result });

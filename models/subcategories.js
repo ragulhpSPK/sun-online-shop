@@ -6,6 +6,10 @@ const subCatSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    categoryId: {
+      type: String,
+      required: true,
+    },
     categoryname: {
       type: String,
       required: true,
@@ -13,9 +17,6 @@ const subCatSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-
-
 
 module.exports =
   mongoose?.models?.subCategory || mongoose.model("subCategory", subCatSchema);
