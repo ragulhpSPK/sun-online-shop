@@ -10,7 +10,6 @@ import {
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
-import Sidenavbar from "../Sidenavbar";
 import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";

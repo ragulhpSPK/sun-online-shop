@@ -1,14 +1,16 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useRouter } from "next/router";
 
 function Layout({ children }) {
+  const router = useRouter();
+
   return (
     <div>
-      <Navbar />
-
+      {router.pathname.split("/").includes("dashboard") ? "" : <Navbar />}
       {children}
-      <Footer />
+      {router.pathname.split("/").includes("dashboard") ? "" : <Footer />}
     </div>
   );
 }

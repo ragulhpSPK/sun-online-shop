@@ -2,7 +2,7 @@ import React from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Link from "next/link";
 
 function Footer() {
@@ -62,22 +62,22 @@ function Footer() {
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Follow Us </h1>
-          <p className="hover:text-[--third-color] hover:font-semibold">
-            <FacebookIcon />
-            Facebook
-          </p>
-          <p className="hover:text-[--third-color] hover:font-semibold">
-            <InstagramIcon />
-            Instagram
-          </p>
-          <p className="hover:text-[--third-color] hover:font-semibold">
-            <TwitterIcon />
-            Twitter
-          </p>
-          <p className="hover:text-[--third-color] hover:font-semibold">
-            <LinkedInIcon />
-            Linkedin
-          </p>
+          <div className="group hover:font-semibold cursor-pointer flex flex-row items-center gap-x-2">
+            <FacebookIcon className="group-hover:text-[#1673eb] " />
+            <h1 className="text-md">Facebook</h1>
+          </div>
+          <div className="group hover:font-semibold cursor-pointer flex flex-row items-center gap-x-2">
+            <InstagramIcon className="group-hover:text-[#f40873] " />
+            <h1 className="text-md">Instagram</h1>
+          </div>
+          <div className="group hover:font-semibold cursor-pointer flex flex-row items-center gap-x-2">
+            <TwitterIcon className="group-hover:text-[#1c96e8] " />
+            <h1 className="text-md">Twitter</h1>
+          </div>
+          <div className="group hover:font-semibold cursor-pointer flex flex-row items-center gap-x-2">
+            <WhatsAppIcon className="group-hover:text-[#1ad03f] " />
+            <h1 className="text-md">Whatsapp</h1>
+          </div>
         </div>
         <div className="flex flex-col gap-2 text-md font-medium">
           <h1 className="text-2xl font-semibold pb-2">Sun App Download</h1>
@@ -88,10 +88,10 @@ function Footer() {
       </div>
       <div>
         <div className="w-[80vw] m-auto pt-10">
-          <h1 className="text-center">
+          <div className="text-center">
             <span className="text-2xl">&#169;</span> Sun Shopee.All Rights
             reserved 2023
-          </h1>
+          </div>
         </div>
       </div>
     </div>

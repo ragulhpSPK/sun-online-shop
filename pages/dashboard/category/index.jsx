@@ -1,5 +1,5 @@
 import React from "react";
-import Sidenavbar from "../Sidenavbar";
+import Sidenavbar from "../shared/Sidenavbar";
 import Categories from "./categories";
 import { Tabs } from "antd";
 import Subcategories from "./subcategories";

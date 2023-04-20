@@ -20,7 +20,7 @@ import {
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import FileUpload from "./imageupload";
-import Sidenavbar from "./Sidenavbar";
+import Sidenavbar from "./shared/Sidenavbar";
 import {
   createProducts,
   getAllCatagory,

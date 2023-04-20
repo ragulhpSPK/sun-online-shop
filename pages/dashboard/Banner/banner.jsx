@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidenavbar from "../Sidenavbar";
+import Sidenavbar from "../shared/Sidenavbar";
 import { Modal, Table, Upload, Form, Input, Select, Option } from "antd";
 import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 import { PlusOutlined } from "@ant-design/icons";

@@ -1,5 +1,5 @@
 import React from "react";
-import Sidenavbar from "./Sidenavbar";
+import Sidenavbar from "./shared/Sidenavbar";
 
 const Home = () => {
   return (
