@@ -19,8 +19,8 @@ import {
 } from "antd";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-import FileUpload from "./imageupload";
-import Sidenavbar from "./shared/Sidenavbar";
+import FileUpload from "../imageupload";
+import Sidenavbar from "../shared/Sidenavbar";
 import {
   createProducts,
   getAllCatagory,
@@ -28,7 +28,7 @@ import {
   getAllproducts,
   updateProducts,
   deleteProducts,
-} from "../../helper/utilities/apiHelper";
+} from "../../../helper/utilities/apiHelper";
 import { get } from "lodash";
 
 function Products() {

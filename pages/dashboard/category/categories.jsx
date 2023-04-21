@@ -7,8 +7,11 @@ import {
   Button,
   notification,
   Upload,
+  Image,
+  Tooltip,
 } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { FileAddOutlined } from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined, RedoOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
@@ -19,51 +22,29 @@ import {
   updateCatagory,
   deleteCatagory,
 } from "../../../helper/utilities/apiHelper";
+import { CaretRightOutlined } from "@ant-design/icons";
+const { Panel } = Collapse;
+import { InboxOutlined } from "@ant-design/icons";
 import { get } from "lodash";
 
-const { Panel } = Collapse;
-
-// const getBase64 = (file) =>
-//   new Promise((resolve, reject) => {
-//     const reader = new FileReader();
-//     reader.readAsDataURL(file);
-//     reader.onload = () => resolve(console.log(reader.result));
-//     reader.onerror = (error) => reject(error);
-//   });
-
-const changeHanlder = (e) => {
-  console.log(e);
-  var reader = new FileReader();
-  reader.readAsDataURL(e.target.files[0]);
-  reader.onload = () => {
-    console.log(reader.result);
-  };
-  reader.onerror = () => {
-    console.log(reader.result);
-  };
-};
+const { Dragger } = Upload;
 
 const Categories = () => {
   const [form] = Form.useForm();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [updateId, setUpdateId] = React.useState("");
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [previewTitle, setPreviewTitle] = useState("");
-  const [fileList, setFileList] = React.useState([
-    {
-      uid: "-4",
-      name: "image.png",
-      status: "done",
-    },
-  ]);
+  const [loading, setLoading] = useState(false);
+  const [imagename, setImageName] = useState("");
 
   const getCategory = async () => {
+    setLoading(true);
     try {
       const res = await getAllCatagory();
       setData(get(res, "data.data", []));
+      setLoading(false);
     } catch (err) {
+      setLoading(false);
       notification.error({
         message: "something went wrong",
       });
@@ -77,9 +58,14 @@ const Categories = () => {
   const handleFinish = async (values) => {
     if (updateId === "") {
       try {
-        await createCatagory(values);
+        const formData = {
+          name: values.name,
+          image: imagename,
+        };
+        await createCatagory(formData);
         notification.success({ message: "Category Added successfully" });
         form.resetFields();
+        setImageName("");
         setOpen(false);
         getCategory();
       } catch (err) {
@@ -89,7 +75,10 @@ const Categories = () => {
     } else {
       try {
         const formData = {
-          data: values,
+          data: {
+            name: values.name,
+            image: imagename,
+          },
           id: updateId,
         };
         await updateCatagory(formData);
@@ -107,14 +96,22 @@ const Categories = () => {
 
   const handleEdit = (value) => {
     setUpdateId(value._id);
+    setImageName(value.image);
     setOpen(true);
     form.setFieldsValue(value);
   };
 
   const handleDelete = async (value) => {
     try {
-      await deleteCatagory(value._id);
-      notification.success({ message: "Category Deleted successfully" });
+      const result = await deleteCatagory(value._id);
+      if (get(result, "data.message", "") === "mapped with subcategory") {
+        Modal.warning({
+          title: "This Category Mapped With SubCategory",
+          content: "if you really wanna delete this delete subcategory first",
+        });
+      } else {
+        notification.success({ message: "Category Deleted successfully" });
+      }
       getCategory();
     } catch (err) {
       notification.error({
@@ -125,143 +122,171 @@ const Categories = () => {
 
   const columns = [
     {
-      title: "Category Name",
+      title: <h1 className="!text-md">Image</h1>,
+      dataIndex: "image",
+      key: "image",
+      align: "start",
+      render: (name) => {
+        return <Image className="!w-[50px] !h-[50px] rounded-box" src={name} />;
+      },
+      width: 200,
+    },
+    {
+      align: "start",
+      title: <h1 className="!text-md">Category Name</h1>,
       dataIndex: "name",
       key: "name",
       render: (name) => {
-        return <h1 className="text-lg">{name}</h1>;
+        return <h1 className="text-md">{name}</h1>;
       },
     },
     {
-      title: "Action",
+      title: <h1 className="!text-md">Update</h1>,
+      align: "end",
+      width: 100,
       render: (values) => {
         return (
-          <div className="flex gap-x-5">
-            <EditNoteOutlinedIcon
-              className="!text-md text-green-500 cursor-pointer"
-              onClick={() => handleEdit(values)}
-            />
-            <DeleteOutlineOutlinedIcon
-              className="!text-md text-red-500 cursor-pointer"
-              onClick={() => handleDelete(values)}
-            />
-          </div>
+          <EditNoteOutlinedIcon
+            className=" text-green-500 cursor-pointer"
+            onClick={() => handleEdit(values)}
+          />
+        );
+      },
+    },
+    {
+      width: 100,
+      title: <h1 className="!text-lg">Delete</h1>,
+      align: "end",
+      render: (values) => {
+        return (
+          <DeleteOutlineOutlinedIcon
+            className=" text-red-500 cursor-pointer"
+            onClick={() => handleDelete(values)}
+          />
         );
       },
     },
   ];
 
-  // const handleCancel = () => setPreviewOpen(false);
-  // const handlePreview = async (file) => {
-  //   if (!file.url && !file.preview) {
-  //     file.preview = await getBase64(file.originFileObj);
-  //   }
-  //   setPreviewImage(file.url || file.preview);
-  //   setPreviewOpen(true);
-  //   setPreviewTitle(
-  //     file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
-  //   );
-  // };
-
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
-
   const props = {
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-    onChange: handleChange,
-    multiple: true,
+    name: "file",
+    multiple: false,
+    onChange(info) {
+      const reader = new FileReader();
+      reader.readAsDataURL(info.file.originFileObj);
+      reader.onload = () => {
+        setImageName(reader.result);
+      };
+    },
+    showUploadList: false,
+    onDrop(e) {
+      console.log("Dropped files", e.dataTransfer.files);
+    },
   };
+
   return (
     <>
-      <div className="flex flex-col ">
-        <div className="flex flex-col gap-y-2 w-[80vw]">
-          <div
-            className="p-2 !bg-white  cursor-pointer self-end pt-[1px] mr-2"
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            <AddCardOutlinedIcon className="!text-green-600" />
-          </div>
-          <div className="p-2">
-            <Table className="w-[80vw]" dataSource={data} columns={columns} />
-          </div>
-        </div>
-      </div>
-      <Modal open={open} destroyOnClose footer={false}>
-        <Form onFinish={handleFinish} form={form}>
-          <div className="flex flex-col gap-y-2 items-center">
-            <Form.Item
-              className="w-[100%]"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter Category Name!",
-                },
-              ]}
-              name="name"
+      <Collapse
+        defaultActiveKey={["1"]}
+        expandIcon={({ isActive }) => (
+          <CaretRightOutlined rotate={isActive ? 90 : 0} />
+        )}
+        collapsible="icon"
+      >
+        <Panel
+          header={<h1 className="text-md">Category</h1>}
+          extra={
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                setOpen(true);
+              }}
             >
-              <Input size="large" placeholder="Category Name" />
-            </Form.Item>
-
-            <Form.Item
-              className="w-[100%]"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter Category Name!",
-                },
-              ]}
-              name="name"
-            >
-              <>
-                <Upload
-                  fileList={fileList}
-                  listType="picture-card"
-                  // onPreview={handlePreview}
-                  onChange={changeHanlder}
-                  {...props}
-                >
-                  {fileList.length >= 8 ? null : uploadButton}
-                </Upload>
-                <Modal
-                  open={previewOpen}
-                  // title={previewTitle}
-                  footer={null}
-                  // onCancel={handleCancel}
-                >
-                  <img
-                    alt="example"
-                    style={{
-                      width: "100%",
-                    }}
-                    // src={previewImage}
-                  />
-                </Modal>
-              </>
-            </Form.Item>
-            <div className="flex flex-row items-end gap-x-2 self-end">
-              <Button type="primary" onClick={() => setOpen(!open)}>
-                Cancel
-              </Button>
-              <Button type="primary" htmlType="submit">
-                {updateId === "" ? "Save" : "Update"}
-              </Button>
+              <FileAddOutlined className="!text-[#943074] !text-xl" />
+            </div>
+          }
+          key="1"
+          className="!w-[42vw]"
+        >
+          <div className="flex flex-col ">
+            <div className="flex flex-col gap-y-2">
+              <div className="p-2">
+                <Table
+                  key="id"
+                  loading={loading}
+                  size="middle"
+                  pagination={{
+                    pageSize: 6,
+                  }}
+                  dataSource={data}
+                  columns={columns}
+                />
+              </div>
             </div>
           </div>
-        </Form>
-      </Modal>
+          <Modal open={open} destroyOnClose footer={false}>
+            <Form onFinish={handleFinish} form={form} autoComplete="off">
+              <div className="flex flex-col gap-y-2 items-center">
+                <Form.Item
+                  className="!w-[100%]"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Category Name!",
+                    },
+                  ]}
+                  name="name"
+                >
+                  <Input placeholder="Category Name" />
+                </Form.Item>
+
+                <Form.Item className="w-[100%]" name="name">
+                  <>
+                    {imagename ? (
+                      <div className="flex flex-row-reverse justify-start gap-x-10">
+                        <Tooltip
+                          onClick={() => setImageName("")}
+                          title="change image"
+                          className="!cursor-pointer !text-red-500"
+                        >
+                          <RedoOutlined />
+                        </Tooltip>
+                        <Image src={imagename} className=" w-[100%]" />
+                      </div>
+                    ) : (
+                      <Dragger {...props}>
+                        <p className="ant-upload-drag-icon">
+                          <InboxOutlined />
+                        </p>
+                        <p className="ant-upload-text">
+                          Click or drag category image to this area to upload
+                        </p>
+                        <p className="ant-upload-hint">
+                          Support for a single upload.
+                        </p>
+                      </Dragger>
+                    )}
+                  </>
+                </Form.Item>
+                <div className="flex flex-row items-end gap-x-2 self-end">
+                  <Button
+                    type="primary"
+                    onClick={() => {
+                      setOpen(!open);
+                      setImageName("");
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="primary" htmlType="submit">
+                    {updateId === "" ? "Save" : "Update"}
+                  </Button>
+                </div>
+              </div>
+            </Form>
+          </Modal>
+        </Panel>
+      </Collapse>
     </>
   );
 };
