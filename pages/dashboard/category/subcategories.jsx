@@ -64,6 +64,7 @@ const Subcategories = (properties) => {
         setOpen(false);
         form.resetFields();
         setLoading(false);
+        setImageName("");
       } catch (err) {
         notification.error({ message: "something went wrong" });
         setLoading(false);

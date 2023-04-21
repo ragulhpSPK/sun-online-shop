@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { PlusOutlined } from "@ant-design/icons";
@@ -17,7 +17,7 @@ import {
   notification,
   message,
 } from "antd";
-import dynamic from "next/dynamic";
+
 import "react-quill/dist/quill.snow.css";
 import FileUpload from "../imageupload";
 import Sidenavbar from "../shared/Sidenavbar";
@@ -30,6 +30,7 @@ import {
   deleteProducts,
 } from "../../../helper/utilities/apiHelper";
 import { get } from "lodash";
+import dynamic from "next/dynamic";
 
 function Products() {
   const [edit, setEdit] = useState(false);
@@ -43,10 +44,15 @@ function Products() {
   const [updateId, setUpdateId] = useState([]);
   const [value, setValue] = useState("");
 
-  const QuillNoSSRWrapper = dynamic(import("react-quill"), {
-    ssr: false,
-    loading: () => <p>Loading ...</p>,
-  });
+  // const QuillNoSSRWrapper = dynamic(import("react-quill"), {
+  //   ssr: false,
+  //   loading: () => <p>Loading ...</p>,
+  // });
+
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
 
   const modules = {
     toolbar: [
@@ -87,20 +93,10 @@ function Products() {
 
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log("kjg", values);
-  };
-
   const editProducts = (value) => {
     setUpdateId(value._id);
     setOpen(!open);
     form.setFieldsValue(value);
-  };
-
-  const changehandler = (value) => {
-    form.setFieldsValue({
-      value,
-    });
   };
 
   const handleCancel = () => {
@@ -131,9 +127,14 @@ function Products() {
   }, []);
 
   const handleFinish = async (value) => {
+    console.log("sighhhhhhhhhh", value);
+
     if (updateId == "") {
       try {
-        await createProducts(value);
+        const formdata = {
+          data: value,
+        };
+        await createProducts(formdata);
         notification.success({ message: "products added successfully" });
         fetchData();
         form.resetFields();
@@ -168,45 +169,42 @@ function Products() {
     }
   };
 
-  console.log("djd", value);
-
-  // const dataSource = [
-  //   {
-  //     key: "1",
-  //     name: "Mike",
-  //     age: 32,
-  //     address: "10 Downing Street",
-  //   },
-  //   {
-  //     key: "2",
-  //     name: "John",
-  //     age: 42,
-  //     address: "10 Downing Street",
-  //   },
-  // ];
+  console.log(value);
 
   const columns = [
     {
       title: "title",
       dataIndex: "title",
       key: "title",
+      render: (name) => {
+        return <h1>{name}</h1>;
+      },
     },
     {
       title: "price",
       dataIndex: "price",
       key: "price",
+      render: (name) => {
+        return <p>{name}</p>;
+      },
     },
     {
       title: "Category Name",
       dataIndex: "categoryname",
       key: "categoryname",
-    },
-    {
-      title: "Subcategory Name",
-      dataIndex: "subcategoryname",
-      key: "subcategoryname",
+      render: (name) => {
+        return <p>{name}</p>;
+      },
     },
 
+    {
+      title: "Highlights",
+      dataIndex: "highlight",
+      key: "highlight",
+      render: (name) => {
+        return <p>{name}</p>;
+      },
+    },
     {
       title: "Action",
       render: (value) => {
@@ -233,7 +231,7 @@ function Products() {
       <div>
         <Sidenavbar />
       </div>
-      <div className="relative !left-48 ">
+      <div className="relative  ">
         <div className="w-[82vw] pt-10" onClick={() => setOpen(!open)}>
           <AddOutlinedIcon className="!text-green-600 float-right mr-2" />
         </div>
@@ -289,7 +287,6 @@ function Products() {
             >
               <Input size="large" placeholder="Enter product Price" />
             </Form.Item>
-
             <Form.Item
               name="categoryname"
               rules={[
@@ -298,7 +295,7 @@ function Products() {
                 },
               ]}
             >
-              <Select placeholder="Select Category">
+              <Select placeholder="Select Category" size="large">
                 {category.map((res) => {
                   return (
                     <Option value={res.name} key={res.id}>
@@ -308,7 +305,6 @@ function Products() {
                 })}
               </Select>
             </Form.Item>
-
             <Form.Item
               name="subcategoryname"
               rules={[
@@ -317,7 +313,7 @@ function Products() {
                 },
               ]}
             >
-              <Select placeholder="Select SubCategory">
+              <Select placeholder="Select SubCategory" size="large">
                 {subCategory.map((res) => {
                   return (
                     <Option value={res.subcategoryname} key={res.id}>
@@ -328,29 +324,21 @@ function Products() {
               </Select>
             </Form.Item>
 
-            <QuillNoSSRWrapper
-              modules={modules}
-              formats={formats}
-              theme="snow"
-              value={value}
-              onChange={setValue}
-              note="description"
-            />
+            <Form.Item name="highlights">
+              <ReactQuill theme="snow" value={value} onChange={setValue} />;
+            </Form.Item>
 
-            <div>
-              <FileUpload />
-            </div>
             <div className="flex gap-5 justify-end ">
               <Button
                 type="Primary"
-                className="bg-white shadow-xl hover:bg-blue-500 !text-black"
+                className="bg-[--third-color] shadow-xl  !text-black"
                 onClick={handleCancel}
               >
                 Cancel
               </Button>
               <Button
                 type="Primary"
-                className="bg-white shadow-xl hover:bg-blue-500 !text-black"
+                className="bg-[--third-color] shadow-xl !text-black"
                 htmlType="submit"
               >
                 {updateId == "" ? "Save" : "Update"}

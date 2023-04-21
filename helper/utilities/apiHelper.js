@@ -38,6 +38,7 @@ export const deleteSubCategory = (formData) => {
 
 //products starting
 export const createProducts = (formData) => {
+  console.log("sdjsif", formData);
   return axios.post("/api/products", formData);
 };
 
