@@ -72,12 +72,9 @@ function Cart() {
           ) : (
             <div className="w-[70vw] flex  flex-col-reverse pt-10 relative ">
               <img
-                src="/assets/empty2.jpg"
-                className="text-center m-auto w-[25vw]"
+                src="/assets/No_Product_Found.png"
+                className="text-center m-auto w-[20vw] animate-pulse absolute top-[5vh] left-[30vw]"
               ></img>
-              <p className="m-auto text-3xl text-slate-500 absolute top-[18vh] left-[28vw]">
-                No products to show
-              </p>
             </div>
           )}
         </div>

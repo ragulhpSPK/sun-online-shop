@@ -11,7 +11,7 @@ function Subcat() {
   const [categories, setCategories] = useState();
   const [product, setProduct] = useState([]);
 
-  console.log("dh", router.query);
+  console.log(router.query);
 
   const getItem = (label, key, icon, children, type) => {
     return {
@@ -36,7 +36,7 @@ function Subcat() {
     let result = Cat.filter((data) => {
       return data.cat_id == categories;
     });
-    console.log(result);
+
     setProduct(result);
   }, [router.query.id]);
 

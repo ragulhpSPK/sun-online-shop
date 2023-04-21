@@ -4,9 +4,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { Divider } from "@mui/material";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { Category } from "@/helper/categories";
 import { SubCategory } from "../helper/Subcategory";
-import { Cat } from "@/helper/product";
+import { Category } from "@/helper/categories";
 import { useRouter } from "next/router";
 import { Input } from "antd";
 import SearchIcon from "@mui/icons-material/Search";
@@ -16,28 +15,31 @@ import { addSearch } from "@/redux/searchSlice";
 function Navbar() {
   const { Search } = Input;
   const Quantity = useSelector((state) => state.cart.quantity);
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState([]);
+
   const [data, setData] = useState([]);
   const router = useRouter();
 
   const dispatch = useDispatch();
 
-  useEffect(
-    () => {
-      setFilter(
-        Category.filter((data) => {
-          console.log("dgsg", data.category.toLowerCase().includes(search));
-        })
-      );
-      filter.map((data) => {
-        setData(data);
-      });
-    },
-    [search],
-    filter
-  );
+  console.log(data);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setSearch(event.target.value);
+      router.push({ pathname: `/subcat`, query: data });
+    } else if (search.length == 0) {
+      router.push({ pathname: "/" });
+    }
+  };
+
+  useEffect(() => {
+    setData(
+      Category.filter((data) => {
+        return data.category.toLowerCase().includes(search);
+      })
+    );
+  }, [search]);
   return (
     <div>
       <div className="h-24 bg-[white] bg-fixed shadow-md shadow-slate-100 ">
@@ -69,6 +71,7 @@ function Navbar() {
                 name="search"
                 placeholder="Search"
                 onChange={(e) => dispatch(addSearch(e.target.value))}
+                onKeyUp={handleKeyDown}
               />
               <button
                 type="submit"

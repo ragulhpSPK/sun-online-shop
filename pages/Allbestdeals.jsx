@@ -33,7 +33,7 @@ function Allbestdeals() {
           {BestDeals.map((data) => {
             return (
               <div
-                className="relative   w-[13vw] h-[30vh] border bg-[#fff] border-gray-200 m-auto shadow-lg"
+                className="relative   w-[13vw] h-[32vh] border bg-[#fff] border-gray-200 m-auto shadow-lg"
                 key={data.id}
               >
                 <img src={data.image} className="h-[220px] pt-10 m-auto" />
@@ -42,7 +42,7 @@ function Allbestdeals() {
                   {data.offer[1]}
                 </p>
                 <p className="text-center text-lg font-medium">{data.name}</p>
-                <p className="text-center text-lg font-medium">
+                <p className="text-center text-lg font-medium ">
                   Rs:{data.price}
                 </p>
               </div>
