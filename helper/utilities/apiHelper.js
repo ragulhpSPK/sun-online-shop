@@ -20,6 +20,7 @@ export const deleteCatagory = (formData) => {
 
 //SubCategory Starting
 export const createSubCatagory = (formData) => {
+  console.log(formData);
   return axios.post("/api/subcategory", formData);
 };
 export const getAllSubCatagory = () => {

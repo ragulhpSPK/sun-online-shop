@@ -15,6 +15,7 @@ export default async function subCategoryController(req, res) {
     case "POST":
       try {
         const sub = new subCategory({ ...req.body });
+
         const result = await sub.save();
         return res.status(200).send({ message: "success" });
         await subCategory();
