@@ -136,3 +136,11 @@ button,
 .ant-table-thead {
   background-color: white !important;
 }
+
+/* antd pagination */
+.ant-pagination-item-active a {
+  color: #943074 !important;
+}
+.ant-pagination .ant-pagination-item-active {
+  border-color: #943074 !important;
+}
