@@ -23,7 +23,7 @@ export const AddCart = [
   {
     id: 2,
     producttitle: "SAMSUNG Galaxy S23 5G (Lavender, 256 GB)  (8 GB RAM)",
-    price: 25999,
+    price: 22999,
     highlights: [
       "8 GB RAM | 256 GB ROM",
       "15.49 cm (6.1 inch) Full HD+ Display",

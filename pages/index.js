@@ -4,8 +4,14 @@ import Delivery from "@/components/delivery";
 import Categories from "@/components/categories";
 import Bestdeals from "@/components/bestdeals";
 import Topproducts from "@/components/topproducts";
+import ProductFilter from "@/components/productFilter";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const result = useSelector((data) => {
+    return data.search.searches;
+  });
+
   return (
     <>
       <Head>
@@ -15,11 +21,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Swiper />
-        <Delivery />
-        <Categories />
-        <Bestdeals />
-        <Topproducts />
+        {result.length > 0 ? (
+          <ProductFilter />
+        ) : (
+          <>
+            <Swiper />
+            <Delivery />
+            <Categories />
+            <Bestdeals />
+            <Topproducts />
+          </>
+        )}
       </main>
     </>
   );
