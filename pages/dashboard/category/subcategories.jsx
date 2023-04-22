@@ -76,6 +76,7 @@ const Subcategories = (properties) => {
           data: {
             categoryId: value.categoryId,
             subcategoryname: value.subcategoryname,
+            image: imagename,
             categoryname: category.filter((category) => {
               return category._id === selectedcategorieName;
             })[0].name,
@@ -88,6 +89,8 @@ const Subcategories = (properties) => {
         fetchData();
         setOpen(false);
         setLoading(false);
+        setImageName("");
+
         notification.success({ message: "Subcategory updated successfully" });
       } catch (err) {
         notification.error({ message: "something went wrong" });
@@ -100,6 +103,7 @@ const Subcategories = (properties) => {
     console.log(value);
     setOpen(true);
     setUpdate(value._id);
+    setImageName(value.image);
 
     form.setFieldsValue(value);
   };

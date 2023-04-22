@@ -33,12 +33,11 @@ function Subcat() {
 
   useEffect(() => {
     setCategories(router.query.id);
-    let result = Cat.filter((data) => {
-      return data.cat_id == categories;
-    });
-
-    setProduct(result);
   }, [router.query.id]);
+
+  let result = Cat.filter((data) => {
+    return data.cat_id == categories;
+  });
 
   return (
     <div className="w-[100vw] flex">

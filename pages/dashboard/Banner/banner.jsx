@@ -1,45 +1,50 @@
 import React, { useState } from "react";
 import Sidenavbar from "../shared/Sidenavbar";
-import { Modal, Table, Upload, Form, Input, Select } from "antd";
+import {
+  Modal,
+  Table,
+  Upload,
+  Form,
+  Input,
+  Select,
+  Button,
+  Tooltip,
+  Image,
+} from "antd";
 import AddCardOutlinedIcon from "@mui/icons-material/AddCardOutlined";
-import { PlusOutlined } from "@ant-design/icons";
+import {
+  FileAddOutlined,
+  InboxOutlined,
+  PlusOutlined,
+  RedoOutlined,
+} from "@ant-design/icons";
 
 function Banner() {
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
-  const [fileList, setFileList] = useState([
-    {
-      uid: "-5",
-      name: "image.png",
-      status: "done",
-    },
-  ]);
+  const [imagename, setImageName] = useState();
 
-  const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
+  const { Dragger } = Upload;
+  const { Option } = Select;
 
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
+  console.log(imagename);
 
   const props = {
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-
+    name: "file",
     multiple: true,
+    onChange(info) {
+      const reader = new FileReader();
+      reader.readAsDataURL(info.file.originFileObj);
+      reader.onload = () => {
+        setImageName(reader.result);
+        // console.log(reader.result);
+      };
+    },
+    showUploadList: true,
+
+    onDrop(e) {
+      console.log("Dropped files", e.dataTransfer.files);
+    },
   };
 
   const columns = [
@@ -54,11 +59,20 @@ function Banner() {
       key: "image",
     },
     {
-      title: "Action",
+      title: "Update",
       render: (value) => {
         return (
           <div className="flex gap-x-5">
             <EditNoteOutlinedIcon className="text-green-500 !cursor-pointer" />
+          </div>
+        );
+      },
+    },
+    {
+      title: "Delete",
+      render: (value) => {
+        return (
+          <div className="flex gap-x-5">
             <DeleteOutlineOutlinedIcon className="text-red-500 !cursor-pointer" />
           </div>
         );
@@ -70,15 +84,15 @@ function Banner() {
       <div>
         <Sidenavbar />
       </div>
-      <div className="w-[80vw] pl-5 relative left-48 ">
+      <div className="w-[80vw] pl-5 relative  ">
         <div onClick={() => setOpen(!open)}>
-          <AddCardOutlinedIcon className="float-right text-green-600 mr-3 cursor-pointer" />
+          <FileAddOutlined className="!text-[#943074] !bg-white !text-2xl float-right mr-[1vw]" />
         </div>
 
         <Table className="pt-4" columns={columns} />
       </div>
 
-      <Modal open={open} onCancel={() => setOpen(!open)}>
+      <Modal open={open} footer={false}>
         <Form>
           <Form.Item name="image" rules={[{ required: true }]}>
             <Select size="large" placeholder="Select Image here">
@@ -86,14 +100,50 @@ function Banner() {
             </Select>
           </Form.Item>
           <Form.Item>
-            <Upload
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              listType="picture-card"
-              {...props}
-            >
-              {fileList.length >= 8 ? null : uploadButton}
-            </Upload>
+            <Tooltip>
+              {imagename ? (
+                <div className="flex flex-row-reverse justify-start gap-x-10">
+                  <Tooltip
+                    onClick={() => setImageName("")}
+                    title="change image"
+                    className="!cursor-pointer !text-red-500"
+                  >
+                    <RedoOutlined />
+                  </Tooltip>
+                  <Image src={imagename} className=" w-[100%]" />
+                </div>
+              ) : (
+                <Dragger {...props} multiple={true}>
+                  <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                  </p>
+                  <p className="ant-upload-text">
+                    Click or drag category image to this area to upload
+                  </p>
+                  <p className="ant-upload-hint">
+                    Support for a single upload.
+                  </p>
+                </Dragger>
+              )}
+            </Tooltip>
           </Form.Item>
+
+          <div className="flex gap-5 justify-end ">
+            <Button
+              type="Primary"
+              className="bg-[--third-color] shadow-xl  !text-white"
+              onClick={() => setOpen(!open)}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="Primary"
+              className="bg-[--third-color] shadow-xl !text-white"
+              htmlType="submit"
+            >
+              Save
+            </Button>
+          </div>
         </Form>
       </Modal>
     </div>
