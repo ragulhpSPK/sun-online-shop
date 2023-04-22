@@ -7,7 +7,7 @@ import { SubCategory } from "@/helper/Subcategory";
 function allCat() {
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState();
-  const [subCategory, setSubCategory] = useState();
+  //   const [subCategory, setSubCategory] = useState();
 
   useEffect(() => {
     setCategory(
@@ -24,6 +24,7 @@ function allCat() {
           <ListIcon />
           <p>All Categories</p>
         </div>
+
         <div className="flex flex-col ">
           {Category.map((data) => {
             console.log(data.category);
