@@ -461,7 +461,7 @@ function Products() {
                         Click or drag category image to this area to upload
                       </p>
                       <p className="ant-upload-hint">
-                        Support for a single upload.
+                        Support for a multiple upload.
                       </p>
                     </Dragger>
                   )}

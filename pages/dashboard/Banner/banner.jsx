@@ -84,7 +84,7 @@ function Banner() {
       <div>
         <Sidenavbar />
       </div>
-      <div className="w-[80vw] pl-5 relative  ">
+      <div className="w-[80vw] pl-5 relative  pt-20">
         <div onClick={() => setOpen(!open)}>
           <FileAddOutlined className="!text-[#943074] !bg-white !text-2xl float-right mr-[1vw]" />
         </div>
