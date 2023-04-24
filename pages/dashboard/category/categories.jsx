@@ -26,37 +26,24 @@ import { CaretRightOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
 import { InboxOutlined } from "@ant-design/icons";
 import { get } from "lodash";
+import SearchIcon from "@mui/icons-material/Search";
 
 const { Dragger } = Upload;
+const { Search } = Input;
 
-const Categories = () => {
+const Categories = (properties) => {
+  const { category, fetchData, loading, setLoading } = properties;
   const [form] = Form.useForm();
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
   const [updateId, setUpdateId] = React.useState("");
-  const [loading, setLoading] = useState(false);
   const [imagename, setImageName] = useState("");
-
-  const getCategory = async () => {
-    setLoading(true);
-    try {
-      const res = await getAllCatagory();
-      setData(get(res, "data.data", []));
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      notification.error({
-        message: "something went wrong",
-      });
-    }
-  };
-
-  useEffect(() => {
-    getCategory();
-  }, []);
+  const [categories, setCategories] = useState([]);
 
   const handleFinish = async (values) => {
     if (updateId === "") {
+      setLoading(true);
+
       try {
         const formData = {
           name: values.name,
@@ -67,13 +54,18 @@ const Categories = () => {
         form.resetFields();
         setImageName("");
         setOpen(false);
-        getCategory();
+        setLoading(false);
+
+        fetchData();
       } catch (err) {
+        setLoading(false);
+
         setOpen(false);
         notification.success({ message: "Somthing went wrong" });
       }
     } else {
       try {
+        setLoading(true);
         const formData = {
           data: {
             name: values.name,
@@ -86,8 +78,14 @@ const Categories = () => {
         form.resetFields();
         setOpen(false);
         setUpdateId("");
-        getCategory();
+        setImageName("");
+
+        setLoading(false);
+
+        fetchData();
       } catch (err) {
+        setLoading(false);
+
         setOpen(false);
         notification.error({ message: "Somthing went wrong" });
       }
@@ -112,13 +110,22 @@ const Categories = () => {
       } else {
         notification.success({ message: "Category Deleted successfully" });
       }
-      getCategory();
+      fetchData();
     } catch (err) {
       notification.error({
         message: "something went wrong",
       });
     }
   };
+
+  useEffect(() => {
+    setCategories(category);
+    setCategories(
+      category.filter((res) => {
+        return res.name.toLowerCase().includes(data);
+      })
+    );
+  }, [category, data]);
 
   const columns = [
     {
@@ -185,7 +192,25 @@ const Categories = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-[4vh]">
+      {/* <Search
+        placeholder="input search text"
+        allowClear
+        style={{
+          width: 600,
+        }}
+      /> */}
+
+      <div className="relative w-[42vw]">
+        <input
+          type="search"
+          placeholder="Type here"
+          className="input input-bordered  !w-[100%] "
+          onChange={(e) => setData(e.target.value)}
+        />
+        <SearchIcon className="absolute top-[8px] right-1 text-3xl" />
+      </div>
+
       <Collapse
         defaultActiveKey={["1"]}
         expandIcon={({ isActive }) => (
@@ -218,7 +243,7 @@ const Categories = () => {
                   pagination={{
                     pageSize: 6,
                   }}
-                  dataSource={data}
+                  dataSource={categories}
                   columns={columns}
                 />
               </div>
@@ -287,7 +312,7 @@ const Categories = () => {
           </Modal>
         </Panel>
       </Collapse>
-    </>
+    </div>
   );
 };
 

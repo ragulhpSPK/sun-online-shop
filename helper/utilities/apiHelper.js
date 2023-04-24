@@ -16,10 +16,11 @@ export const updateCatagory = (formData) => {
 export const deleteCatagory = (formData) => {
   return axios.delete(`/api/catagory/${formData}`);
 };
-// categories ending
+// categories ended...
 
 //SubCategory Starting
 export const createSubCatagory = (formData) => {
+  console.log(formData);
   return axios.post("/api/subcategory", formData);
 };
 export const getAllSubCatagory = () => {
@@ -33,10 +34,11 @@ export const updateSubCategory = (formData) => {
 export const deleteSubCategory = (formData) => {
   return axios.delete(`/api/subcategory/${formData}`);
 };
-//SubCategory ended
+//SubCategory ended...
 
-//products starting
+//products Starting...
 export const createProducts = (formData) => {
+  console.log("sdjsif", formData);
   return axios.post("/api/products", formData);
 };
 
@@ -51,3 +53,4 @@ export const updateProducts = (formData) => {
 export const deleteProducts = (formData) => {
   return axios.delete(`/api/products/${formData}`);
 };
+//product Ended...

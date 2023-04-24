@@ -15,6 +15,15 @@ const productSchema = new mongoose.Schema(
     subcategoryname: {
       type: String,
     },
+    highlight: {
+      type: String,
+      required: true,
+    },
+
+    image: {
+      type: [String],
+      required: true,
+    },
   },
   { timestamps: true }
 );

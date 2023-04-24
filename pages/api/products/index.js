@@ -15,9 +15,10 @@ export default async function productController(req, res) {
     case "POST":
       try {
         console.log("BODY", req.body);
-        const product = new Product(req.body);
+        const product = new Product({ ...req.body });
         console.log("lklj", product);
         const result = await product.save();
+        console.log("result", result);
 
         return res.status(200).send({ data: result });
       } catch (err) {
